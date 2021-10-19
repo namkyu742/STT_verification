@@ -1,0 +1,9 @@
+[2021-10-19 14:53:29,127] -------------------------- Program start --------------------------
+[2021-10-19 14:53:29,127] path : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001
+[2021-10-19 14:53:29,127] fileName : hobby_0000 / range : 7 ~ 7
+[2021-10-19 14:53:29,286] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000007.txt
+[2021-10-19 14:53:29,286] open audio file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000007.wav
+[2021-10-19 14:53:30,702] request etri stt
+[2021-10-19 14:53:30,714] hobby_00000007's ratio : 0.8577777777777779
+[2021-10-19 14:53:31,266] Success to save excel file to [data\failed_list\result_2021-10-19_14-53-31.xlsx]
+[2021-10-19 14:53:31,266] --------------------------- Program end ---------------------------

@@ -84,6 +84,7 @@ import math
 import time
 
 # ------------------ [CONSTANT VARIALBE] ------------------
+# API와 데이터셋 설정, 기준정확도에 대한 부분은 추후 개발 예정
 USED_API = "ETRI STT"
 USED_DATA_SET = "한국인대화음성"
 TARGET_RATIO = 0.95
@@ -107,7 +108,7 @@ dictConfig({
         'file': {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
-            'filename': 'debug.log',
+            'filename': 'data/debug.log',
             'formatter': 'default',
         },
     },
