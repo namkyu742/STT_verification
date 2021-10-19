@@ -633,7 +633,7 @@ def examinationSTT(p_start:int, p_end:int, folderPath:str, fileName:str):
 
             # 분할된 각각의 음성데이터 전사처리 & 병합
             splitedFileList = splitWAV.getFilelist()
-            mergeTransScript = ""
+            mergeTransScript = ""      # 분할된 전사텍스트 병합
 
             for j in range(0, len(splitedFileList)):
                 etri = ETRI_STT_API(folderPath, splitedFileList[j], API_ACCESS_KEY)
@@ -647,27 +647,33 @@ def examinationSTT(p_start:int, p_end:int, folderPath:str, fileName:str):
             m_etri = ETRI_STT_API(folderPath, tempName, API_ACCESS_KEY)
             m_etri.setTransScript(mergeTransScript)
             ratio = m_etri.analyzeScriptDifference(1)
-            originScript = m_etri.getOriginScript()
-            transScript = m_etri.getTransScript()
 
             # 데이터 평가
-            if ratio>=TARGET_RATIO:
+            if (ratio >= TARGET_RATIO):
                 count += 1
             else:
-                failedList.append({'name':str(tempName), 'ratio':str(ratio), 'origin_text':originScript, 'trans_text':transScript})
+                failedList.append({
+                    'name':str(tempName), 
+                    'ratio':str(ratio), 
+                    'origin_text':m_etri.getOriginScript(), 
+                    'trans_text':m_etri.getTransScript()
+                    })
 
         else:
             etri = ETRI_STT_API(folderPath, tempName, API_ACCESS_KEY)
             etri.oneClick()
             ratio = etri.getRatio()
-            originScript = etri.getOriginScript()
-            transScript = etri.getTransScript()
 
             # 데이터 평가
-            if ratio>=TARGET_RATIO:
+            if (ratio >= TARGET_RATIO):
                 count += 1
             else:
-                failedList.append({'name':str(tempName), 'ratio':str(ratio), 'origin_text':originScript, 'trans_text':transScript})
+                failedList.append({
+                    'name':str(tempName), 
+                    'ratio':str(ratio), 
+                    'origin_text':etri.getOriginScript(), 
+                    'trans_text':etri.getTransScript()
+                    })
 
     # 콘솔에 데이터 출력
     # 성공개수, 성공률, 없는파일개수, 수행시간
