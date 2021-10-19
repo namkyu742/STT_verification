@@ -1,0 +1,160 @@
+[2021-10-19 10:06:59,807] Program start
+[2021-10-19 10:06:59,807] path : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001
+[2021-10-19 10:06:59,807] file : hobby_0000
+[2021-10-19 10:06:59,807] range : 1 ~ 10
+[2021-10-19 10:06:59,955] open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000001.txt
+[2021-10-19 10:06:59,955] open audio file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000001.wav
+[2021-10-19 10:07:00,726] request etri stt
+[2021-10-19 10:07:00,736] hobby_00000001's ratio : 1.0
+[2021-10-19 10:07:00,737] open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000002.txt
+[2021-10-19 10:07:00,737] open audio file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000002.wav
+[2021-10-19 10:07:01,868] request etri stt
+[2021-10-19 10:07:01,868] hobby_00000002's ratio : 1.0
+[2021-10-19 10:07:01,869] open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000003.txt
+[2021-10-19 10:07:01,869] open audio file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000003.wav
+[2021-10-19 10:07:03,898] request etri stt
+[2021-10-19 10:07:03,898] hobby_00000003's ratio : 0.9666666666666666
+[2021-10-19 10:07:03,898] open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000004.txt
+[2021-10-19 10:07:03,899] open audio file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000004.wav
+[2021-10-19 10:07:04,837] request etri stt
+[2021-10-19 10:07:04,837] hobby_00000004's ratio : 1.0
+[2021-10-19 10:07:04,837] open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000005.txt
+[2021-10-19 10:07:04,838] open audio file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000005.wav
+[2021-10-19 10:07:05,814] request etri stt
+[2021-10-19 10:07:05,814] hobby_00000005's ratio : 0.9857142857142858
+[2021-10-19 10:07:05,815] open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000006.txt
+[2021-10-19 10:07:05,815] open audio file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000006.wav
+[2021-10-19 10:07:06,803] request etri stt
+[2021-10-19 10:07:06,803] hobby_00000006's ratio : 1.0
+[2021-10-19 10:07:06,804] open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000007.txt
+[2021-10-19 10:07:06,804] open audio file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000007.wav
+[2021-10-19 10:07:08,115] request etri stt
+[2021-10-19 10:07:08,116] hobby_00000007's ratio : 0.8577777777777779
+[2021-10-19 10:07:08,117] open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000008.txt
+[2021-10-19 10:07:08,117] open audio file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000008.wav
+[2021-10-19 10:07:09,667] request etri stt
+[2021-10-19 10:07:09,667] hobby_00000008's ratio : 1.0
+[2021-10-19 10:07:09,668] open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000009.txt
+[2021-10-19 10:07:09,668] open audio file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000009.wav
+[2021-10-19 10:07:10,916] request etri stt
+[2021-10-19 10:07:10,916] hobby_00000009's ratio : 0.9529411764705882
+[2021-10-19 10:07:10,917] open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000010.txt
+[2021-10-19 10:07:10,917] open audio file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000010.wav
+[2021-10-19 10:07:11,954] request etri stt
+[2021-10-19 10:07:11,954] hobby_00000010's ratio : 1.0
+[2021-10-19 10:07:12,488] Success to save excel file to [data\failed_list\result_2021-10-19_10-07-12.xlsx]
+[2021-10-19 10:07:32,189] Program start
+[2021-10-19 10:07:32,189] path : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001
+[2021-10-19 10:07:32,189] file : hobby_0000
+[2021-10-19 10:07:32,189] range : 1 ~ 10
+[2021-10-19 10:07:32,329] open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000001.txt
+[2021-10-19 10:07:32,329] open audio file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000001.wav
+[2021-10-19 10:07:33,131] request etri stt
+[2021-10-19 10:07:33,141] hobby_00000001's ratio : 1.0
+[2021-10-19 10:07:33,142] open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000002.txt
+[2021-10-19 10:07:33,142] open audio file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000002.wav
+[2021-10-19 10:07:34,263] request etri stt
+[2021-10-19 10:07:34,264] hobby_00000002's ratio : 1.0
+[2021-10-19 10:07:34,264] open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000003.txt
+[2021-10-19 10:07:34,264] open audio file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000003.wav
+[2021-10-19 10:07:36,202] request etri stt
+[2021-10-19 10:07:36,202] hobby_00000003's ratio : 0.9666666666666666
+[2021-10-19 10:07:36,203] open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000004.txt
+[2021-10-19 10:07:36,203] open audio file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000004.wav
+[2021-10-19 10:07:37,169] request etri stt
+[2021-10-19 10:07:37,169] hobby_00000004's ratio : 1.0
+[2021-10-19 10:07:37,169] open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000005.txt
+[2021-10-19 10:07:37,169] open audio file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000005.wav
+[2021-10-19 10:07:38,138] request etri stt
+[2021-10-19 10:07:38,139] hobby_00000005's ratio : 0.9857142857142858
+[2021-10-19 10:07:38,139] open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000006.txt
+[2021-10-19 10:07:38,139] open audio file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000006.wav
+[2021-10-19 10:07:39,078] request etri stt
+[2021-10-19 10:07:39,078] hobby_00000006's ratio : 1.0
+[2021-10-19 10:07:39,079] open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000007.txt
+[2021-10-19 10:07:39,079] open audio file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000007.wav
+[2021-10-19 10:07:40,372] request etri stt
+[2021-10-19 10:07:40,374] hobby_00000007's ratio : 0.8577777777777779
+[2021-10-19 10:07:40,374] open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000008.txt
+[2021-10-19 10:07:40,375] open audio file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000008.wav
+[2021-10-19 10:07:41,972] request etri stt
+[2021-10-19 10:07:41,972] hobby_00000008's ratio : 1.0
+[2021-10-19 10:07:41,973] open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000009.txt
+[2021-10-19 10:07:41,973] open audio file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000009.wav
+[2021-10-19 10:07:43,278] request etri stt
+[2021-10-19 10:07:43,278] hobby_00000009's ratio : 0.9529411764705882
+[2021-10-19 10:07:43,279] open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000010.txt
+[2021-10-19 10:07:43,279] open audio file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000010.wav
+[2021-10-19 10:07:44,330] request etri stt
+[2021-10-19 10:07:44,331] hobby_00000010's ratio : 1.0
+[2021-10-19 10:07:44,862] Success to save excel file to [eofkoewkf]
+[2021-10-19 10:08:51,516] Program start
+[2021-10-19 10:08:51,516] path : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001
+[2021-10-19 10:08:51,516] file : hobby_0000
+[2021-10-19 10:08:51,516] range : 7 ~ 7
+[2021-10-19 10:08:51,665] open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000007.txt
+[2021-10-19 10:08:51,665] open audio file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000007.wav
+[2021-10-19 10:08:52,983] request etri stt
+[2021-10-19 10:08:52,994] hobby_00000007's ratio : 0.8577777777777779
+[2021-10-19 10:08:53,527] Failed to save excel file to ]
+[2021-10-19 10:40:22,927] Program start
+[2021-10-19 10:40:22,927] path : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001
+[2021-10-19 10:40:22,927] file : hobby_0000
+[2021-10-19 10:40:22,927] range : 7 ~ 7
+[2021-10-19 10:40:23,073] open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000007.txt
+[2021-10-19 10:40:23,073] open audio file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000007.wav
+[2021-10-19 10:40:24,420] request etri stt
+[2021-10-19 10:40:24,431] hobby_00000007's ratio : 0.8577777777777779
+[2021-10-19 10:46:10,204] Program start
+[2021-10-19 10:46:10,204] path : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001
+[2021-10-19 10:46:10,204] file : hobby_0000
+[2021-10-19 10:46:10,204] range : 7 ~ 7
+[2021-10-19 10:46:10,343] open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000007.txt
+[2021-10-19 10:46:10,344] open audio file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000007.wav
+[2021-10-19 10:46:11,668] request etri stt
+[2021-10-19 10:46:11,679] hobby_00000007's ratio : 0.8577777777777779
+[2021-10-19 10:46:12,212] Failed to save excel file to []
+[2021-10-19 10:46:16,256] Program start
+[2021-10-19 10:46:16,256] path : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001
+[2021-10-19 10:46:16,256] file : hobby_0000
+[2021-10-19 10:46:16,256] range : 7 ~ 7
+[2021-10-19 10:46:16,415] open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000007.txt
+[2021-10-19 10:46:16,415] open audio file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000007.wav
+[2021-10-19 10:46:17,722] request etri stt
+[2021-10-19 10:46:17,733] hobby_00000007's ratio : 0.8577777777777779
+[2021-10-19 10:46:18,267] Success to save excel file to [as]
+[2021-10-19 11:32:42,556] Program start
+[2021-10-19 11:32:42,556] path : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001
+[2021-10-19 11:32:42,556] file : hobby_0000
+[2021-10-19 11:32:42,556] range : 7 ~ 7
+[2021-10-19 11:32:42,710] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000007.txt
+[2021-10-19 11:32:42,710] open audio file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000007.wav
+[2021-10-19 11:32:44,029] request etri stt
+[2021-10-19 11:32:44,041] hobby_00000007's ratio : 0.8577777777777779
+[2021-10-19 11:32:44,588] Success to save excel file to [data\failed_list\result_2021-10-19_11-32-44.xlsx]
+[2021-10-19 11:34:56,179] Program start
+[2021-10-19 11:34:56,179] path : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001
+[2021-10-19 11:34:56,179] file : hobby_0000
+[2021-10-19 11:34:56,179] range : 7 ~ 7
+[2021-10-19 11:34:56,330] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000007.txt
+[2021-10-19 11:34:56,331] open audio file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000007.wav
+[2021-10-19 11:34:57,702] request etri stt
+[2021-10-19 11:34:57,713] hobby_00000007's ratio : 0.8577777777777779
+[2021-10-19 11:34:58,256] Success to save excel file to [data\failed_list\result_2021-10-19_11-34-58.xlsx]
+[2021-10-19 11:35:45,048] ---------------------- Program start ----------------------
+[2021-10-19 11:35:45,049] path : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001
+[2021-10-19 11:35:45,049] fileName : hobby_0000 / range : 7 ~ 7
+[2021-10-19 11:35:45,193] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000007.txt
+[2021-10-19 11:35:45,193] open audio file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000007.wav
+[2021-10-19 11:35:46,506] request etri stt
+[2021-10-19 11:35:46,517] hobby_00000007's ratio : 0.8577777777777779
+[2021-10-19 11:35:47,035] Success to save excel file to [data\failed_list\result_2021-10-19_11-35-47.xlsx]
+[2021-10-19 11:36:28,516] ---------------------- Program start ----------------------
+[2021-10-19 11:36:28,516] path : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001
+[2021-10-19 11:36:28,516] fileName : hobby_0000 / range : 7 ~ 7
+[2021-10-19 11:36:28,658] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000007.txt
+[2021-10-19 11:36:28,658] open audio file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000007.wav
+[2021-10-19 11:36:29,962] request etri stt
+[2021-10-19 11:36:29,973] hobby_00000007's ratio : 0.8577777777777779
+[2021-10-19 11:36:30,513] Success to save excel file to [data\failed_list\result_2021-10-19_11-36-30.xlsx]
+[2021-10-19 11:36:30,513] ----------------------- Program end -----------------------

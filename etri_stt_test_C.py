@@ -65,6 +65,7 @@ GUI 설계 방안
 
 ------------------------------------------------------------------
 [참고자료]
+날짜시간 가져오기 (https://yujuwon.tistory.com/entry/%ED%98%84%EC%9E%AC-%EB%82%A0%EC%A7%9C-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0)
 예외처리 (https://wikidocs.net/30#try-finally)
 음성데이터 분할 (https://stackoverflow.com/questions/37999150/how-to-split-a-wav-file-into-multiple-wav-files)
 os 라이브러리 사용법 (https://webisfree.com/2018-03-16/python-%ED%8C%8C%EC%9D%BC-%EB%B0%8F-%EB%94%94%EB%A0%89%ED%86%A0%EB%A6%AC-%EC%82%AD%EC%A0%9C%ED%95%98%EB%8A%94-%EB%B0%A9%EB%B2%95)
@@ -86,8 +87,13 @@ import time
 USED_API = "ETRI STT"
 USED_DATA_SET = "한국인대화음성"
 TARGET_RATIO = 0.95
+# FLAGS_FOR_EXCEPTION
+TEST_FOLDERPATH = 0b000001
+TEST_FILENAME   = 0b000010
+TEST_RANGE      = 0b000100
 
 # ------------------- [for CODE LOGGING] -------------------
+# 참고 링크 (https://wikidocs.net/123324)
 from logging.config import dictConfig
 import logging
 dictConfig({
@@ -124,26 +130,32 @@ class ETRI_STT_API():
     def __init__(self, folderPath, fileName, apiAccessKey):
         """
         경로, 파일이름, API Key를 인스턴스변수에 저장하고 전사텍스트와 정확도 변수를 초기화한다.
-        음성데이터와 같은 경로에 있는 원본텍스트파일을 읽어 인스턴스변수에 저장한다.
+        음성데이터와 같은 경로에 있는 라벨링텍스트파일을 읽어 인스턴스변수에 저장한다.
         """
-        self.folderPath = folderPath
-        self.fileName = fileName
-        self.transScript = ""   # 전사텍스트
-        self.ratio = 0.0        # 정확도
-        self.apiAccessKey = apiAccessKey
+        self.folderPath = folderPath        # 음성데이터의 폴더 경로
+        self.fileName = fileName            # 음성데이터의 파일 이름(넘버링 앞부분)
+        self.transScript = ""               # 전사 텍스트
+        self.originScript = ""              # 라벨링 텍스트
+        self.ratio = 0.0                    # 정확도
+        self.apiAccessKey = apiAccessKey    # API 접근 키
 
         filePath = os.path.join(self.folderPath, self.fileName + ".txt")
-        scriptFile = open(filePath, mode='rt', encoding='UTF8')
-        logging.info("open script file : " + filePath)
-        self.originScript = scriptFile.read()
-        scriptFile.close()
+        try:
+            scriptFile = open(filePath, mode='rt', encoding='UTF8')
+            logging.info("Success to open script file : " + filePath)
+            self.originScript = scriptFile.read()
+        except Exception as e:
+            logging.info("Failed to open script file : " + filePath)
+            print("exception: ", e)
+        finally:
+            scriptFile.close()
         
     def getTransScript(self):
-        """전사텍스트를 반환한다."""
+        """전사 텍스트를 반환한다."""
         return self.transScript
 
     def setTransScript(self, transScript):
-        """전사텍스트를 인스턴트변수에 저장한다."""
+        """전사 텍스트를 인스턴트변수에 저장한다."""
         self.transScript = transScript
 
     def getRatio(self):
@@ -155,7 +167,7 @@ class ETRI_STT_API():
         return os.path.join(self.folderPath, self.fileName + ".wav")
 
     def getOriginScript(self):
-        """원본텍스트를 반환한다."""
+        """라벨링 텍스트를 반환한다."""
         return self.originScript
 
     def run(self):
@@ -197,25 +209,29 @@ class ETRI_STT_API():
     def checkDoubleCopying(self):
         """
         이중전사 (철자전사)/(발음전사) 검사
-        원본텍스트의 철자전사와 발음전사 중 어느쪽이 전사텍스트에 가까운지 검사하여 선택한다.
+        라벨링텍스트의 철자전사와 발음전사 중 어느쪽이 전사텍스트에 가까운지 검사하여 선택한다.
         동시에 이중전사 기호('(', ')', '/')를 문자열에서 제거한다.
         또한, 이 단계에서 간투어표현을 위해 사용되는 기호 '/'도 같이 제거된다.
         """
-        # 이중전사(철자전사)/(발음전사) 검사
         import regex
         from difflib import SequenceMatcher
         
         transScript = self.transScript
         checkingString = regex.findall('\p{Hangul}+|\W|\d', self.getOriginScript()) 
-        # 한글자 단위로 리스트에 옮긴다.
-
+        """
+        regex.findall()은 정규식과 매치되는 모든 문자열을 리스트형식으로 리턴한다.
+        위 정규식의 의미 : 
+            - \p{Hangul}+   : 한글
+            - \W            : 단어 문자가 아닌 모든 문자
+            - \d            : 모든 유니코드 십진수
+        """
         # flag 변수 초기화
         flag1 = False       # 괄호가 열려있으면 True
         flag2 = False       # 두번째 괄호(발음전사)일때 True
 
-        resultScript = ""  # 검사 결과를 기록할 문자열
-        tempScript1 = ""  # 철자전사를 기록할 문자열
-        tempScript2 = ""  # 발음전사를 기록할 문자열
+        resultScript = ""   # 검사 결과를 기록할 문자열
+        tempScript1 = ""    # 철자전사를 기록할 문자열
+        tempScript2 = ""    # 발음전사를 기록할 문자열
             
         for i in range(0, len(checkingString)):
             if (checkingString[i] == '(' and flag1 == False and flag2 == False):
@@ -286,7 +302,7 @@ class ETRI_STT_API():
 
     def analyzeScriptDifference(self, option):
         """
-        원본텍스트와 전사텍스트를 비교하여 음성인식의 의미적정확도를 측정한다.
+        라벨링텍스트와 전사텍스트를 비교하여 음성인식의 의미적정확도를 측정한다.
             - option : 콘솔에 비교 결과를 출력할 것인지 선택 (단, 기준정확도 미달 데이터만 출력됨)
         사용하는 함수는 jellyfish 라이브러리의 jaro_winkler_similarity함수.
             - jaro거리 : [0,1]에서 부동 소수점 응답을 제공하는 문자열 편집 거리
@@ -323,7 +339,7 @@ class ETRI_STT_API():
         음성데이터가 20초 미만일 경우. 인스턴스 변수에 의미적정확도를 저장
         """
         self.transScript = self.run()
-        self.ratio = self.analyzeScriptDifference(1)
+        self.ratio = self.analyzeScriptDifference(1) # 매개변수 1이면 결과를 콘솔에 출력
 
     def oneClickSplited(self):
         """
@@ -340,10 +356,10 @@ def ShowRunTime(runningTime):
     runHour = 0
     if (runSecond > 3600):
         runHour = int(runSecond / 3600)
-        runSecond = runSecond - (3600*runHour)
+        runSecond = runSecond - (3600 * runHour)
     if (runSecond > 60):
         runMinute = int(runSecond / 60)
-        runSecond = runSecond - (60*runMinute)
+        runSecond = runSecond - (60 * runMinute)
 
     runTime = ""
     if (runHour > 0):
@@ -359,7 +375,7 @@ def OutputResultAsEXCEL(failedList, resultList, missingList):
     xlsx파일로 의미적정확도가 기준을 미달한 음성데이터에 대해 기록.
     기록되는 항목
         - 파일생성날짜, 사용된 API, 사용된 데이터셋, 수행시간, 성공개수, 검사개수, 성공률
-        - 파일 넘버, 음성데이터 파일명, 정확도, 원본텍스트, 전사텍스트
+        - 파일 넘버, 음성데이터 파일명, 정확도, 라벨링텍스트, 전사텍스트
     """
     from openpyxl import Workbook
     from openpyxl.styles import Border, Side, Font, Alignment, PatternFill
@@ -391,7 +407,6 @@ def OutputResultAsEXCEL(failedList, resultList, missingList):
     writeWS.column_dimensions['N'].width = 12
     writeWS.column_dimensions['O'].width = 10
 
-
     # [Sub Title1]
     wsSubTitle1 = []
     wsSubTitle1.append({"locate":1, "text":"파일생성날짜"})
@@ -410,7 +425,6 @@ def OutputResultAsEXCEL(failedList, resultList, missingList):
         writeWS.cell(2, wsSubTitle1[i]['locate']).font = Font(bold=True, color="FFFFFF")
         writeWS.cell(2, wsSubTitle1[i]['locate']).fill = PatternFill(fgColor="333333", fill_type="solid")
 
-
     # [Sub Title1 내용 입력]
     from datetime import datetime
     writeWS.cell(2, 3, datetime.today().strftime("%Y-%m-%d")).alignment = Alignment(horizontal="center")
@@ -426,7 +440,7 @@ def OutputResultAsEXCEL(failedList, resultList, missingList):
     wsSubTitle2.append({"locate":1, "text":"No"})
     wsSubTitle2.append({"locate":2, "text":"음성데이터"})
     wsSubTitle2.append({"locate":4, "text":"정확도"})
-    wsSubTitle2.append({"locate":6, "text":"원본 텍스트"})
+    wsSubTitle2.append({"locate":6, "text":"라벨링 텍스트"})
     wsSubTitle2.append({"locate":10, "text":"전사 텍스트"})
     writeWS.merge_cells(f'B3:C3')
     writeWS.merge_cells(f'D3:E3')
@@ -487,15 +501,28 @@ def OutputResultAsEXCEL(failedList, resultList, missingList):
             cell.border = THIN_BORDER
 
     # [파일 저장]
+    from datetime import datetime
+    time = datetime.today().strftime("%Y-%m-%d_%H-%M-%S")
+    savePath = os.path.join('data', 'failed_list', 'result_' + time + '.xlsx')
+
     try:
-        writeWB.save('./data/test.xlsx')
-        print("./data/test.xlsx 에 파일을 저장하였습니다.")
-        logging.info("excel file saved")
+        writeWB.save(savePath)
     except Exception as e:
-        print("예외 :", e) 
-        logging.info("occur Exception : ", e)
-        writeWB.save('./data/test_temp.xlsx')
-        print("./data/test_temp.xlsx 에 파일을 저장하였습니다.")
+        """
+        TODO 예외처리 실패
+        예외처리를 하였음에도 특정상황에서 에러가 발생함
+            - savePath가 ""(공백)일 경우
+        지정한 경로 이외의 임의의 문자가 savePath에 저장될 경우
+            - ex) "abc" -> 파이썬 코드가 존재하는 폴더에 abc 파일이 생성됨 -> 액셀파일로 열면 내용 확인 가능(확장자 없음)
+        """
+        print(savePath, " 에 파일을 저장하지 못하였습니다.")
+        print("[Error] ", e)
+        logging.info("Failed to save excel file to [" + savePath + "]")
+        logging.info("[Error] ", e)
+    else:
+        print(savePath, " 에 파일을 저장하였습니다.")
+        logging.info("Success to save excel file to [" + savePath + "]")
+
 
 class SplitWavAudioMubin():
     """
@@ -541,7 +568,7 @@ class SplitWavAudioMubin():
             if(os.path.isfile(remove_path)):
                 os.remove(remove_path)
 
-def function1(p_start:int, p_end:int, folderPath:str, fileName:str):
+def examinationSTT(p_start:int, p_end:int, folderPath:str, fileName:str):
     """
     시작점, 끝점, 폴더경로, 파일이름
     파일이름 + 시작점(빈 자리수는 0으로 채움)에서 파일이름 + 끝점(빈 자리수는 0으로 채움)까지 검토
@@ -552,10 +579,10 @@ def function1(p_start:int, p_end:int, folderPath:str, fileName:str):
 
     failedList = []        # 정확도 기준 미달 음성데이터 목록
     missingList = []       # 파일이 존재하지 않는 음성데이터 목록
-    count = 0              # 정확도 기준 달성 카운터
-    noFileCount = 0
+    count = 0              # 정확도 기준 달성 음성데이터 개수
+    noFileCount = 0        # 파일이 존재하지 않는 음성데이터 개수
 
-    API_ACCESS_KEY = "198b2f86-c3a3-409c-b524-3f065eb25dd7"
+    API_ACCESS_KEY = "198b2f86-c3a3-409c-b524-3f065eb25dd7" # ETRI API 접근 Key
 
     startNum = p_start     # 검사 시작 번호
     endNum = p_end         # 검사 끝 번호
@@ -566,22 +593,17 @@ def function1(p_start:int, p_end:int, folderPath:str, fileName:str):
         exit()
 
     for i in range(startNum, endNum + 1):
-        # [For Adjustment file name]
+        # [Numbering file name]
         if i<10:            tempName = fileName + '000' + str(i)
         elif 10<=i<100:     tempName = fileName + '00' + str(i)
         elif 100<=i<1000:   tempName = fileName + '0' + str(i)
 
         # [Checking]
-        # 파일 존재 여부 확인 필요
-        # 파일이 없을 시 "파일 없음" 출력 후 다음 파일로 이동
-
-        # [Checking]
-        # 20초 이상의 음성데이터는  ETRI_STT 한국어 인식 API를 사용할 수가 없다.
-        # 정확히는 20초 이상의 음성데이터는 20초까지만 인식하고 나머지를 버린다.
+        # 20초 이상의 음성데이터는 ETRI 한국어 음성인식 API를 사용할 수가 없다.
+        # ETRI 한국어 음성인식 API는 20초 이상의 음성데이터의 경우 20초까지만 인식하고 나머지를 버린다.
         from scipy.io import wavfile
 
         audiofilePath = os.path.join(folderPath, tempName + '.wav')
-   
         # 파일이 존재하지 않을 경우 count 증가시키고 다음 파일로 넘어감
         if (os.path.isfile(audiofilePath) == False):
             logging.info("Path ["+audiofilePath+"] is no file")
@@ -648,10 +670,11 @@ def function1(p_start:int, p_end:int, folderPath:str, fileName:str):
                 failedList.append({'name':str(tempName), 'ratio':str(ratio), 'origin_text':originScript, 'trans_text':transScript})
 
     # 콘솔에 데이터 출력
+    # 성공개수, 성공률, 없는파일개수, 수행시간
     resultString = "--------------------------- | RESULT | ---------------------------\n"
     resultString += "success count : " + str(count) + " / " + str(numSize-noFileCount) + "\n"
-    resultString += "success ratio : " + str(round(count/(numSize-noFileCount)*100)) + "%\n"
     resultString += "missing count : " + str(noFileCount) + "\n"
+    resultString += "success ratio : " + str(round(count/(numSize-noFileCount)*100)) + "%\n"
     resultString += "Runtime       : " + ShowRunTime(round(time.time() - start, 0))
     print(resultString)
 
@@ -679,27 +702,24 @@ def Run():
     프로그램 실행
     - 시작번호, 끝번호, 파일경로, 파일이름이 설정되어있음.
     """
-    start = 1
-    end = 10
+    start = 7
+    end = 7
     folderPath = os.path.join(os.path.dirname(__file__), 'aihub_data\\hobby_01\\001')
     fileName = "hobby_0000"
 
-    logging.info("Program start")
+    logging.info("-------------------------- Program start --------------------------")
     logging.info("path : " + folderPath)
-    logging.info("file : " + fileName)
-    logging.info("range : " + str(start) + " ~ " + str(end))
-    function1(start, end, folderPath, fileName)
+    logging.info("fileName : " + fileName + " / range : " + str(start) + " ~ " + str(end))
+    examinationSTT(start, end, folderPath, fileName)
+    logging.info("--------------------------- Program end ---------------------------")
 
-# flags
-TEST_FOLDERPATH = 0b000001
-TEST_FILENAME   = 0b000010
-TEST_RANGE      = 0b000100
+
 def exceptionTest(option):
     """
     예외 상황, 에러발생 등을 테스트
     """
-    start = 1
-    end = 10
+    start = 7
+    end = 7
     folderPath = os.path.join(os.path.dirname(__file__), 'aihub_data\\hobby_01\\001')
     fileName = "hobby_0000"
 
@@ -711,13 +731,12 @@ def exceptionTest(option):
         start = 4
         end = 2
 
-    logging.info("Program start")
+    logging.info("---------------------- Program start ----------------------")
     logging.info("path : " + folderPath)
-    logging.info("file : " + fileName)
-    logging.info("range : " + str(start) + " ~ " + str(end))
-    function1(start, end, folderPath, fileName)
+    logging.info("fileName : " + fileName + " / range : " + str(start) + " ~ " + str(end))
+    examinationSTT(start, end, folderPath, fileName)
 
-# -------------------- [Program Start]] --------------------
+# -------------------- [Program Start] --------------------
 if __name__ == '__main__':
     Run()
 
@@ -734,4 +753,4 @@ if __name__ == '__main__':
     #     if (select == 1):
     #         p_start = int(input("시작넘버: "))
     #         p_end = int(input("종료넘버: "))
-    #         function1(p_start, p_end)
+    #         examinationSTT(p_start, p_end)
