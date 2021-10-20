@@ -77,6 +77,7 @@ os 라이브러리 사용법2 (https://yganalyst.github.io/data_handling/memo_1/
 """
 
 # ----------------------- [imports] -----------------------
+from subprocess import REALTIME_PRIORITY_CLASS
 import urllib3
 import json
 import base64
@@ -97,6 +98,15 @@ TEST_FILENAME   = 0b000010
 TEST_RANGE      = 0b000100
 
 PROGRAM_PATH = os.path.dirname(__file__)
+
+
+# For use Thread
+import threading
+NUM_OF_THREADS = 3
+ratio_list1 = []
+ratio_list2 = []
+ratio_list3 = []
+lock = threading.Lock()
 
 # ------------------- [for CODE LOGGING] -------------------
 # 참고 링크 (https://wikidocs.net/123324)
@@ -417,7 +427,7 @@ class useSTT_API():
         음성데이터가 20초 미만일 경우. 인스턴스 변수에 의미적정확도를 저장
         """
         self.chooseSTTEngine()
-        self.ratio = self.analyzeScriptDifference(1) # 매개변수 1이면 결과를 콘솔에 출력
+        self.ratio = self.analyzeScriptDifference(0) # 매개변수 1이면 결과를 콘솔에 출력
 
     def oneClickSplited(self):
         """
@@ -447,160 +457,6 @@ def ShowRunTime(runningTime):
     runTime += str(runSecond) + "초"
 
     return runTime
-
-def OutputResultAsEXCEL(failedList, resultList, missingList):
-    """
-    xlsx파일로 의미적정확도가 기준을 미달한 음성데이터에 대해 기록.
-    기록되는 항목
-        - 파일생성날짜, 사용된 API, 사용된 데이터셋, 수행시간, 성공개수, 검사개수, 성공률
-        - 파일 넘버, 음성데이터 파일명, 정확도, 라벨링텍스트, 전사텍스트
-    """
-    from openpyxl import Workbook
-    from openpyxl.styles import Border, Side, Font, Alignment, PatternFill
-    writeWB = Workbook()
-    writeWS = writeWB.active
-
-    # [Title]
-    writeWS.merge_cells('A1:O1')
-    writeWS.cell(1, 1, "정확도 95% 이하 음성데이터 목록").alignment = Alignment(horizontal="center", vertical="center")
-    writeWS.cell(1, 1).font = Font(size=15, bold=True)
-    writeWS.row_dimensions[1].height = 40
-
-    # [액셀 열 간격 조정]
-    writeWS.column_dimensions['A'].width = 6
-    writeWS.column_dimensions['B'].width = 6
-    writeWS.column_dimensions['C'].width = 14
-    writeWS.column_dimensions['D'].width = 8
-    writeWS.column_dimensions['E'].width = 12
-
-    writeWS.column_dimensions['F'].width = 14
-    writeWS.column_dimensions['G'].width = 16
-    writeWS.column_dimensions['H'].width = 10
-    writeWS.column_dimensions['I'].width = 18
-
-    writeWS.column_dimensions['J'].width = 12
-    writeWS.column_dimensions['K'].width = 6
-    writeWS.column_dimensions['L'].width = 12
-    writeWS.column_dimensions['M'].width = 6
-    writeWS.column_dimensions['N'].width = 12
-    writeWS.column_dimensions['O'].width = 10
-
-    # [Sub Title1]
-    wsSubTitle1 = []
-    wsSubTitle1.append({"locate":1, "text":"파일생성날짜"})
-    wsSubTitle1.append({"locate":4, "text":"사용API"})
-    wsSubTitle1.append({"locate":6, "text":"사용데이터셋"})
-    wsSubTitle1.append({"locate":8, "text":"수행시간"})
-    wsSubTitle1.append({"locate":10, "text":"성공개수"})
-    wsSubTitle1.append({"locate":12, "text":"검사개수"})
-    wsSubTitle1.append({"locate":14, "text":"성공률"})
-    writeWS.merge_cells(f'A2:B2')
-
-    # [Sub Title1 셀 서식]
-    for i in range(0, 7):
-        writeWS.cell(2, wsSubTitle1[i]['locate'], wsSubTitle1[i]["text"])
-        writeWS.cell(2, wsSubTitle1[i]['locate']).alignment = Alignment(horizontal="center", vertical="center")
-        writeWS.cell(2, wsSubTitle1[i]['locate']).font = Font(bold=True, color="FFFFFF")
-        writeWS.cell(2, wsSubTitle1[i]['locate']).fill = PatternFill(fgColor="333333", fill_type="solid")
-
-    # [Sub Title1 내용 입력]
-    from datetime import datetime
-    writeWS.cell(2, 3, datetime.today().strftime("%Y-%m-%d")).alignment = Alignment(horizontal="center")
-    writeWS.cell(2, 5, USED_API).alignment = Alignment(horizontal="center")
-    writeWS.cell(2, 7, USED_DATA_SET).alignment = Alignment(horizontal="center")
-    writeWS.cell(2, 9, resultList[2]).alignment = Alignment(horizontal="right")
-    writeWS.cell(2, 11, resultList[0]) .alignment = Alignment(horizontal="right")
-    writeWS.cell(2, 13, resultList[1]) .alignment = Alignment(horizontal="right")
-    writeWS.cell(2, 15, str(round(resultList[0]/resultList[1]*100)) + "%\n") .alignment = Alignment(horizontal="center")
-    
-    # [Sub Title2]
-    wsSubTitle2 = []
-    wsSubTitle2.append({"locate":1, "text":"No"})
-    wsSubTitle2.append({"locate":2, "text":"음성데이터"})
-    wsSubTitle2.append({"locate":4, "text":"정확도"})
-    wsSubTitle2.append({"locate":6, "text":"라벨링 텍스트"})
-    wsSubTitle2.append({"locate":10, "text":"전사 텍스트"})
-    writeWS.merge_cells(f'B3:C3')
-    writeWS.merge_cells(f'D3:E3')
-    writeWS.merge_cells(f'F3:I3')
-    writeWS.merge_cells(f'J3:O3')
-
-    # [Sub Title2 셀 서식]
-    for i in range(0, 5):
-        writeWS.cell(3, wsSubTitle2[i]['locate'], wsSubTitle2[i]["text"])
-        writeWS.cell(3, wsSubTitle2[i]['locate']).alignment = Alignment(horizontal="center", vertical="center")
-        writeWS.cell(3, wsSubTitle2[i]['locate']).font = Font(bold=True, color="FFFFFF")
-        writeWS.cell(3, wsSubTitle2[i]['locate']).fill = PatternFill(fgColor="333333", fill_type="solid")
-
-    # [Sub Title2 내용 입력 : 정확도 95%미만 음성데이터 목록]
-    count = 4
-    for i in failedList:
-        writeWS.cell(count, 1, count-3)
-        writeWS.merge_cells(f'B{count}:C{count}')
-        writeWS.cell(count, 2, i['name'])
-        writeWS.merge_cells(f'D{count}:E{count}')
-        writeWS.cell(count, 4, round(float(i['ratio']), 2))
-        writeWS.merge_cells(f'F{count}:I{count}')
-        writeWS.cell(count, 6, i['origin_text'])
-        writeWS.merge_cells(f'J{count}:O{count}')
-        writeWS.cell(count, 10, i['trans_text'])
-        
-        writeWS.cell(count, 2).alignment = Alignment(horizontal="center")
-        writeWS.cell(count, 4).alignment = Alignment(horizontal="right")
-        writeWS.cell(count, 6).alignment = Alignment(horizontal="left")
-        writeWS.cell(count, 10).alignment = Alignment(horizontal="left") 
-        count += 1
-
-    # [Sub Title2 내용 입력 : 파일이 누락된 음성데이터 목록]
-    for i in missingList:
-        writeWS.cell(count, 1, count-3)
-        writeWS.merge_cells(f'B{count}:C{count}')
-        writeWS.cell(count, 2, i['name'])
-        writeWS.merge_cells(f'D{count}:E{count}')
-        writeWS.cell(count, 4, i['ratio'])
-        writeWS.merge_cells(f'F{count}:I{count}')
-        writeWS.cell(count, 6, i['origin_text'])
-        writeWS.merge_cells(f'J{count}:O{count}')
-        writeWS.cell(count, 10, i['trans_text'])
-        
-        for j in range(1, 16):
-            writeWS.cell(count, j).fill = PatternFill(fgColor="BFBFBF", fill_type="solid")
-        
-        writeWS.cell(count, 2).alignment = Alignment(horizontal="center")
-        writeWS.cell(count, 4).alignment = Alignment(horizontal="center")
-        writeWS.cell(count, 6).alignment = Alignment(horizontal="center")
-        writeWS.cell(count, 10).alignment = Alignment(horizontal="center") 
-        count += 1
-
-    # [테두리 설정]
-    THIN_BORDER = Border(Side('thin'),Side('thin'),Side('thin'),Side('thin'))
-    for rng in writeWS[f'A1:O{count-1}']:
-        for cell in rng:
-            cell.border = THIN_BORDER
-
-    # [파일 저장]
-    from datetime import datetime
-    time = datetime.today().strftime("%Y-%m-%d_%H-%M-%S")
-    savePath = os.path.join(PROGRAM_PATH, 'data', 'failed_list', 'result_' + time + '.xlsx')
-
-    try:
-        writeWB.save(savePath)
-    except Exception as e:
-        """
-        TODO 예외처리 실패
-        예외처리를 하였음에도 특정상황에서 에러가 발생함
-            - savePath가 ""(공백)일 경우
-        지정한 경로 이외의 임의의 문자가 savePath에 저장될 경우
-            - ex) "abc" -> 파이썬 코드가 존재하는 폴더에 abc 파일이 생성됨 -> 액셀파일로 열면 내용 확인 가능(확장자 없음)
-        """
-        print(savePath, " 에 파일을 저장하지 못하였습니다.")
-        print("[Error] ", e)
-        logging.info("Failed to save excel file to [" + savePath + "]")
-        logging.info("[Error] ", e)
-    else:
-        print(savePath, " 에 파일을 저장하였습니다.")
-        logging.info("Success to save excel file to [" + savePath + "]")
-
 
 class SplitWavAudioMubin():
     """
@@ -660,7 +516,7 @@ def examinationSTT(p_start:int, p_end:int, folderPath:str, fileName:str, selecte
     음성데이터가 20초 이상일 경우 20초 단위로 분할하여 개별 텍스트 전사 후 텍스트를 합병하여 의미적정확도 검사
     """
     # [For check Runtime]
-    start = time.time()
+    # start = time.time()
 
     failedList = []        # 정확도 기준 미달 음성데이터 목록
     missingList = []       # 파일이 존재하지 않는 음성데이터 목록
@@ -679,6 +535,8 @@ def examinationSTT(p_start:int, p_end:int, folderPath:str, fileName:str, selecte
         logging.info("It's out of the range of files.")
         print("It's out of the range of files.")
         exit()
+
+    N_list = []
 
     for i in range(startNum, endNum + 1):
         # [Numbering file name]
@@ -707,6 +565,7 @@ def examinationSTT(p_start:int, p_end:int, folderPath:str, fileName:str, selecte
 
         fs, data = wavfile.read(audiofilePath)
         playTime = len(data)/fs
+        ratio = 0.0
 
         if (playTime > 20):
             # 음성데이터의 길이가 20초를 초과할 경우 음성데이터 전사 전에 20초 단위로 잘라서 입력
@@ -739,7 +598,7 @@ def examinationSTT(p_start:int, p_end:int, folderPath:str, fileName:str, selecte
             # ratio 측정
             m_sttAPI = useSTT_API(folderPath, tempName, API_ACCESS_KEY, selectedApi)
             m_sttAPI.setTransScript(mergeTransScript)
-            ratio = m_sttAPI.analyzeScriptDifference(1)
+            ratio = m_sttAPI.analyzeScriptDifference(0)
 
             # 데이터 평가
             if (ratio >= TARGET_RATIO):
@@ -768,92 +627,122 @@ def examinationSTT(p_start:int, p_end:int, folderPath:str, fileName:str, selecte
                     'trans_text':sttAPI.getTransScript()
                     })
 
-    # 콘솔에 데이터 출력
-    # 성공개수, 성공률, 없는파일개수, 수행시간
-    resultString = "--------------------------- | RESULT | ---------------------------\n"
-    resultString += "success count : " + str(count) + " / " + str(numSize-noFileCount) + "\n"
-    resultString += "missing count : " + str(noFileCount) + "\n"
-    resultString += "success ratio : " + str(round(count/(numSize-noFileCount)*100)) + "%\n"
-    resultString += "Runtime       : " + ShowRunTime(round(time.time() - start, 0))
-    print(resultString)
+        N_list.append({"name":tempName, "ratio":ratio})
+    return N_list
 
-    # 액셀파일용 데이터
-    resultList = []
-    resultList.append(count)
-    resultList.append(numSize-noFileCount)
-    resultList.append(ShowRunTime(round(time.time() - start, 0)))
-    resultList.append(noFileCount)
-    OutputResultAsEXCEL(failedList, resultList, missingList)
+class Worker (threading.Thread):
+    def __init__(self, name, start, end, folderPath, fileName):
+        super().__init__()
+        self.name = name
+        self.start0 = start
+        self.end = end
+        self.folderPath = folderPath
+        self.fileName = fileName
+    
+    def run(self):
+        global ratio_list1
+        global ratio_list2
+        global ratio_list3
 
-def showMenu():
-    """
-    프로그램 메뉴를 출력하는 함수
-    """
-    print("--- MENU ---")
-    print("1. RUN")
-    print("2. ")
-    print("3. ")
-    print("0. EXIT")
-
-def Run():
-    """
-    프로그램 실행
-    - 시작번호, 끝번호, 파일경로, 파일이름, 사용할 API가 설정되어있음.
-    """
-    start = 1
-    end = 5
-    folderPath = os.path.join(PROGRAM_PATH, 'aihub_data\\hobby_01\\001')
-    fileName = "hobby_0000"
-    selectedApi = "ETRI"
-    # selectedApi = "Google"
-    # selectedApi = "Kakao"
-
-    logging.info("-------------------------- Program start --------------------------")
-    logging.info("path : " + folderPath)
-    logging.info("fileName : " + fileName + " / range : " + str(start) + " ~ " + str(end))
-    examinationSTT(start, end, folderPath, fileName, selectedApi)
-    examinationSTT(start, end, folderPath, fileName, "Google")
-    examinationSTT(start, end, folderPath, fileName, "Kakao")
-    logging.info("--------------------------- Program end ---------------------------")
-
-
-def exceptionTest(option):
-    """
-    예외 상황, 에러발생 등을 테스트
-    """
-    start = 7
-    end = 7
-    folderPath = os.path.join(PROGRAM_PATH, 'aihub_data\\hobby_01\\001')
-    fileName = "hobby_0000"
-
-    if (option & TEST_FOLDERPATH == TEST_FOLDERPATH):
-        folderPath = os.path.join('')
-    if (option & TEST_FILENAME == TEST_FILENAME):
-        fileName = ""
-    if (option & TEST_RANGE == TEST_RANGE):
-        start = 4
-        end = 2
-
-    logging.info("---------------------- Program start ----------------------")
-    logging.info("path : " + folderPath)
-    logging.info("fileName : " + fileName + " / range : " + str(start) + " ~ " + str(end))
-    examinationSTT(start, end, folderPath, fileName, "ETRI")
+        import copy
+        if (self.name == "0"):
+            ratio_list1 = copy.copy(examinationSTT(self.start0, self.end, self.folderPath, self.fileName, "ETRI"))
+        if (self.name == "1"):
+            ratio_list2 = copy.copy(examinationSTT(self.start0, self.end, self.folderPath, self.fileName, "Google"))
+        if (self.name == "2"):
+            ratio_list3 = copy.copy(examinationSTT(self.start0, self.end, self.folderPath, self.fileName, "Kakao"))
+            
 
 # -------------------- [Program Start] --------------------
 if __name__ == '__main__':
-    Run()
+    startb = time.time()
+    start = 299
+    end = 300
+    folderPath = os.path.join(PROGRAM_PATH, 'aihub_data\\hobby_01\\001')
+    fileName = "hobby_0000"
 
-    # exceptionTest(TEST_RANGE)
+    p_size = end-start+1
 
-    # 콘솔 메뉴 개발중 (UI 프로토타입)
-    # showMenu()
-    # select = -1
-    # while(True):
-    #     select = int(input("선택: "))
-    #     if (select == 0):
-    #         exit()
+    count1 = 0
+    count2 = 0
+    count3 = 0
 
-    #     if (select == 1):
-    #         p_start = int(input("시작넘버: "))
-    #         p_end = int(input("종료넘버: "))
-    #         examinationSTT(p_start, p_end)
+    # ----- THREAD -----
+
+    threads = []
+    temp_point = 0
+    for n in range(0, NUM_OF_THREADS):
+        thread = Worker(n, start, end, folderPath, fileName)
+        thread.start()
+        threads.append(thread)
+    
+    for thread in threads:
+        thread.join()
+
+    print("              ETRI  Google  Kakao")
+    for i in range (0, p_size):
+        score_e = '{:.3f}'.format(ratio_list1[i]["ratio"])
+        score_g = '{:.3f}'.format(ratio_list2[i]["ratio"])
+        score_k = '{:.3f}'.format(ratio_list3[i]["ratio"])
+        score_max = max(score_e, score_g, score_k)
+        max_str = ""
+        if (score_max == score_e): 
+            if(score_e == score_g):
+                if(score_g == score_k):
+                    max_str = "ETRI & Google & Kakao"
+                    count1 += 1
+                    count2 += 1
+                    count3 += 1
+                else:
+                    max_str = "ETRI & Google"
+                    count1 += 1
+                    count2 += 1
+            elif(score_e == score_k):
+                max_str = "ETRI & Kakao"
+                count1 += 1
+                count3 += 1
+            else:
+                max_str = "ETRI"
+                count1 += 1
+        elif (score_max == score_g): 
+            if (score_g == score_k):
+                max_str = "Google & Kakao"
+                count2 += 1
+                count3 += 1
+            else:
+                max_str = "Google"
+                count2 += 1
+        elif (score_max == score_k): 
+            max_str = "Kakao"
+            count3 += 1
+        
+        print(ratio_list1[i]["name"],
+            '{:.3f}'.format(ratio_list1[i]["ratio"]),
+            '{:.3f}'.format(ratio_list2[i]["ratio"]),
+            '{:.3f}'.format(ratio_list3[i]["ratio"]),
+            max_str
+        )
+
+    print("------------------------------------------------------")
+
+    ratio1 = round(count1/p_size*100)
+    ratio2 = round(count2/p_size*100)
+    ratio3 = round(count3/p_size*100)
+
+    print("┌────────┬─────────┬─────────┐")
+    print("│  API   │  count  │ percent │")
+    print("├────────┼─────────┼─────────┤")
+    print("│  ETRI  │  "+format(count1, "3")+"개  │   "+format(ratio1, "3")+"%  │")
+    print("│ Google │  "+format(count2, "3")+"개  │   "+format(ratio2, "3")+"%  │")
+    print("│ Kakao  │  "+format(count3, "3")+"개  │   "+format(ratio3, "3")+"%  │")
+    print("└────────┴─────────┴─────────┘")
+
+    winner = max(count1, count2, count3)
+    if(winner == count1):
+        print("ETRI ", end="")
+    if(winner == count2):
+        print("Google ", end="")
+    if(winner == count3):
+        print("Kakao ", end="")
+    print()
+    print("RUNTIME :", ShowRunTime(round(time.time() - startb, 0)))
