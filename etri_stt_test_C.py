@@ -18,6 +18,7 @@
 08. 완료 - 프로그램 로그 작성
 09. 완료 - 변수, 함수 네이밍 법칙 정리
 10. 액셀파일에 누락된 음성데이터 개수 넣기
+11. API 선택기능
 
 ------------------------------------------------------------------
 프로그램 동작 순서 구상안
@@ -69,6 +70,7 @@ GUI 설계 방안
 예외처리 (https://wikidocs.net/30#try-finally)
 음성데이터 분할 (https://stackoverflow.com/questions/37999150/how-to-split-a-wav-file-into-multiple-wav-files)
 os 라이브러리 사용법 (https://webisfree.com/2018-03-16/python-%ED%8C%8C%EC%9D%BC-%EB%B0%8F-%EB%94%94%EB%A0%89%ED%86%A0%EB%A6%AC-%EC%82%AD%EC%A0%9C%ED%95%98%EB%8A%94-%EB%B0%A9%EB%B2%95)
+os 라이브러리 사용법2 (https://yganalyst.github.io/data_handling/memo_1/)
 실행파일 만들기1 (https://wikidocs.net/21952)
 실행파일 만들기2 (https://m.blog.naver.com/smilewhj/221070338758)
 파일 존재여부검사 (https://wikidocs.net/14304)
@@ -82,6 +84,7 @@ import os
 from pydub import AudioSegment
 import math
 import time
+import requests
 
 # ------------------ [CONSTANT VARIALBE] ------------------
 # API와 데이터셋 설정, 기준정확도에 대한 부분은 추후 개발 예정
@@ -92,6 +95,8 @@ TARGET_RATIO = 0.95
 TEST_FOLDERPATH = 0b000001
 TEST_FILENAME   = 0b000010
 TEST_RANGE      = 0b000100
+
+PROGRAM_PATH = os.path.dirname(__file__)
 
 # ------------------- [for CODE LOGGING] -------------------
 # 참고 링크 (https://wikidocs.net/123324)
@@ -108,7 +113,7 @@ dictConfig({
         'file': {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
-            'filename': 'data/debug.log',
+            'filename': PROGRAM_PATH + '/data/debug.log',
             'formatter': 'default',
         },
     },
@@ -119,26 +124,39 @@ dictConfig({
 })
 
 # ------------------ [Speech To Text API] ------------------
-class ETRI_STT_API():
+class useSTT_API():
     """
-    ETRI에서 개발한 오픈소스 API「음성지능」을 본 프로그램에 맞게 사용하기 위해 클래스로 작성
-    folderPath : 파일의 경로
-    fileName : 파일의 이름
-    apiAccessKey : API를 사용하기 위해 인증받은 Key
-      - 경로와 이름을 통해 wav파일과 txt파일을 읽고,
-        wav파일을 API를 통해 전사한 후 txt파일과 비교하여 정확도를 측정한 후 반환한다.
+    음성인식 엔진을 사용하여 음성인식정확도를 검증하기 위한 클래스
+
+    사용가능한 음성인식엔진:
+        - ETRI STT Engine
+        - Google STT Engine
+        - Kakao STT Engine
+
+    Args:
+        - folderPath : 파일의 경로
+        - fileName : 파일의 이름
+        - apiAccessKey : API를 사용하기 위해 인증받은 Key
+    
+    경로와 이름을 통해 wav파일과 txt파일을 읽고,
+    wav파일을 API를 통해 전사한 후 txt파일과 비교하여 정확도를 측정한 후 반환한다.
     """
-    def __init__(self, folderPath, fileName, apiAccessKey):
-        """
-        경로, 파일이름, API Key를 인스턴스변수에 저장하고 전사텍스트와 정확도 변수를 초기화한다.
-        음성데이터와 같은 경로에 있는 라벨링텍스트파일을 읽어 인스턴스변수에 저장한다.
-        """
+    
+    def __init__(self, folderPath:str, fileName:str, apiAccessKey:dict, selectedApi:str):
         self.folderPath = folderPath        # 음성데이터의 폴더 경로
         self.fileName = fileName            # 음성데이터의 파일 이름(넘버링 앞부분)
         self.transScript = ""               # 전사 텍스트
         self.originScript = ""              # 라벨링 텍스트
         self.ratio = 0.0                    # 정확도
-        self.apiAccessKey = apiAccessKey    # API 접근 키
+        self.selectedApi = selectedApi
+        self.selectedApiAccessKey = "None"
+        if (selectedApi == "ETRI") : self.selectedApiAccessKey = apiAccessKey['ETRI']
+        elif (selectedApi == "Kakao"): self.selectedApiAccessKey = apiAccessKey['Kakao']
+        elif (selectedApi == "Google"): self.selectedApiAccessKey = apiAccessKey['Google']
+        else:
+            logging.info("Incorrect API selection : " + selectedApi)
+            print("Incorrect API selection : " + selectedApi)
+            exit()
 
         filePath = os.path.join(self.folderPath, self.fileName + ".txt")
         try:
@@ -150,28 +168,31 @@ class ETRI_STT_API():
             print("exception: ", e)
         finally:
             scriptFile.close()
+
+    def getApiAccessKey(self):
+        return self.selectedApiAccessKey
         
-    def getTransScript(self):
+    def getTransScript(self)->str:
         """전사 텍스트를 반환한다."""
         return self.transScript
 
-    def setTransScript(self, transScript):
+    def setTransScript(self, transScript:str):
         """전사 텍스트를 인스턴트변수에 저장한다."""
         self.transScript = transScript
 
-    def getRatio(self):
+    def getRatio(self)->float:
         """정확도를 반환한다."""
         return self.ratio
         
-    def getFilePath(self):
+    def getFilePath(self)->str:
         """음성데이터의 파일이름과 확장자를 포함한 파일경로를 반환한다."""
         return os.path.join(self.folderPath, self.fileName + ".wav")
 
-    def getOriginScript(self):
+    def getOriginScript(self)->str:
         """라벨링 텍스트를 반환한다."""
         return self.originScript
 
-    def run(self):
+    def etriSTTEngine(self)->str:
         """API를 호출한다."""
         openApiURL = "http://aiopen.etri.re.kr:8000/WiseASR/Recognition"
         languageCode = "korean"
@@ -188,7 +209,7 @@ class ETRI_STT_API():
         file.close()
         
         requestJson = {
-            "access_key": self.apiAccessKey,
+            "access_key": self.getApiAccessKey(),
             "argument": {
                 "language_code": languageCode,
                 "audio": audioContents
@@ -207,6 +228,62 @@ class ETRI_STT_API():
         data = json.loads(response.data.decode("utf-8", errors='ignore'))
         return data['return_object']['recognized']
 
+    def kakaoSTTEngine(self)->str:
+        kakao_speech_url = "https://kakaoi-newtone-openapi.kakao.com/v1/recognize"
+
+        headers = {
+            "Content-Type": "application/octet-stream",
+            "X-DSS-Service": "DICTATION",
+            "Authorization": "KakaoAK " + self.getApiAccessKey(),
+        }
+
+        audiofilePath = self.getFilePath()
+        with open(audiofilePath, 'rb') as fp:
+            audio = fp.read()
+
+        res = requests.post(kakao_speech_url, headers=headers, data=audio)
+        result_json_string = res.text[res.text.index('{"type":"finalResult"'):res.text.rindex('}')+1]
+        result = json.loads(result_json_string)
+        
+        return result['value']
+        
+    def googleSTTEngine(self)->str:
+        import io
+        from google.cloud import speech
+
+        client = speech.SpeechClient()
+        audiofilePath = self.getFilePath()
+
+        # Loads the audio into memory
+        with io.open(audiofilePath, 'rb') as audio_file:
+            content = audio_file.read()
+            audio = speech.RecognitionAudio(content=content)
+
+        config = speech.RecognitionConfig(
+            encoding=speech.RecognitionConfig.AudioEncoding.LINEAR16,
+            sample_rate_hertz=16000, #44000
+            # audio_channel_count=2,
+            # speech_contexts=[speech.types.SpeechContext(
+            # phrases=['hi', 'good afternoon']
+            # )],
+            language_code='ko-KR')
+
+        # Detects speech in the audio file
+        response = client.recognize(config=config, audio=audio)
+
+        for result in response.results:
+            result_return = format(result.alternatives[0].transcript)
+                        
+        return result_return
+
+    def chooseSTTEngine(self):
+        if (self.selectedApi == "ETRI"): self.transScript = self.etriSTTEngine()
+        elif (self.selectedApi == "Google") : self.transScript = self.googleSTTEngine()
+        elif (self.selectedApi == "Kakao") : self.transScript = self.kakaoSTTEngine()
+        else:
+            logging.info("Incorrect API selection")
+            exit()
+      
     def checkDoubleCopying(self):
         """
         이중전사 (철자전사)/(발음전사) 검사
@@ -339,14 +416,14 @@ class ETRI_STT_API():
         """
         음성데이터가 20초 미만일 경우. 인스턴스 변수에 의미적정확도를 저장
         """
-        self.transScript = self.run()
+        self.chooseSTTEngine()
         self.ratio = self.analyzeScriptDifference(1) # 매개변수 1이면 결과를 콘솔에 출력
 
     def oneClickSplited(self):
         """
         음성데이터가 20초 이상일 경우. 분할된 각각의 음성데이터에 대해 API를 사용하여 전사텍스트를 추출
         """
-        self.transScript = self.run()
+        self.chooseSTTEngine()
         
 def ShowRunTime(runningTime):
     """
@@ -504,7 +581,7 @@ def OutputResultAsEXCEL(failedList, resultList, missingList):
     # [파일 저장]
     from datetime import datetime
     time = datetime.today().strftime("%Y-%m-%d_%H-%M-%S")
-    savePath = os.path.join('data', 'failed_list', 'result_' + time + '.xlsx')
+    savePath = os.path.join(PROGRAM_PATH, 'data', 'failed_list', 'result_' + time + '.xlsx')
 
     try:
         writeWB.save(savePath)
@@ -569,10 +646,17 @@ class SplitWavAudioMubin():
             if(os.path.isfile(remove_path)):
                 os.remove(remove_path)
 
-def examinationSTT(p_start:int, p_end:int, folderPath:str, fileName:str):
+def examinationSTT(p_start:int, p_end:int, folderPath:str, fileName:str, selectedApi:str):
     """
-    시작점, 끝점, 폴더경로, 파일이름
+    Args:
+        - p_start: 검사 시작점
+        - p_end: 검사 종료점
+        - folderPath: 파일이 존재하는 폴더 경로
+        - fileName: 파일 이름
+        - selectedApi: 선택한 API
+
     파일이름 + 시작점(빈 자리수는 0으로 채움)에서 파일이름 + 끝점(빈 자리수는 0으로 채움)까지 검토
+
     음성데이터가 20초 이상일 경우 20초 단위로 분할하여 개별 텍스트 전사 후 텍스트를 합병하여 의미적정확도 검사
     """
     # [For check Runtime]
@@ -583,12 +667,15 @@ def examinationSTT(p_start:int, p_end:int, folderPath:str, fileName:str):
     count = 0              # 정확도 기준 달성 음성데이터 개수
     noFileCount = 0        # 파일이 존재하지 않는 음성데이터 개수
 
-    API_ACCESS_KEY = "198b2f86-c3a3-409c-b524-3f065eb25dd7" # ETRI API 접근 Key
+    API_ACCESS_KEY = {"Name":"Key"}
+    API_ACCESS_KEY["ETRI"] = "198b2f86-c3a3-409c-b524-3f065eb25dd7" # ETRI API 접근 Key
+    API_ACCESS_KEY["Kakao"] = "104c68aae23c3ffae3f622d01c9165e1"    # Kakao API 접근 Key
+    API_ACCESS_KEY["Google"] = "None"                               # Google API Key 없음
 
     startNum = p_start     # 검사 시작 번호
     endNum = p_end         # 검사 끝 번호
     numSize = endNum - startNum + 1  # 작업량    
-    if (numSize<=0):       # [Error : Input range]
+    if (numSize <= 0):       # [Error : Input range]
         logging.info("It's out of the range of files.")
         print("It's out of the range of files.")
         exit()
@@ -610,7 +697,12 @@ def examinationSTT(p_start:int, p_end:int, folderPath:str, fileName:str):
             logging.info("Path ["+audiofilePath+"] is no file")
             print("There is no file")
             noFileCount += 1
-            missingList.append({'name':str(tempName), 'ratio':"no data", 'origin_text':"no data", 'trans_text':"no data"})
+            missingList.append({
+                'name':str(tempName), 
+                'ratio':"no data", 
+                'origin_text':"no data", 
+                'trans_text':"no data"
+                })
             continue
 
         fs, data = wavfile.read(audiofilePath)
@@ -637,17 +729,17 @@ def examinationSTT(p_start:int, p_end:int, folderPath:str, fileName:str):
             mergeTransScript = ""      # 분할된 전사텍스트 병합
 
             for j in range(0, len(splitedFileList)):
-                etri = ETRI_STT_API(folderPath, splitedFileList[j], API_ACCESS_KEY)
-                etri.oneClickSplited()
-                mergeTransScript += etri.getTransScript()
+                sttAPI = useSTT_API(folderPath, splitedFileList[j], API_ACCESS_KEY, selectedApi)
+                sttAPI.oneClickSplited()
+                mergeTransScript += sttAPI.getTransScript()
 
             # 분할된 데이터 제거
             splitWAV.remove_splited_files()
 
             # ratio 측정
-            m_etri = ETRI_STT_API(folderPath, tempName, API_ACCESS_KEY)
-            m_etri.setTransScript(mergeTransScript)
-            ratio = m_etri.analyzeScriptDifference(1)
+            m_sttAPI = useSTT_API(folderPath, tempName, API_ACCESS_KEY, selectedApi)
+            m_sttAPI.setTransScript(mergeTransScript)
+            ratio = m_sttAPI.analyzeScriptDifference(1)
 
             # 데이터 평가
             if (ratio >= TARGET_RATIO):
@@ -656,14 +748,14 @@ def examinationSTT(p_start:int, p_end:int, folderPath:str, fileName:str):
                 failedList.append({
                     'name':str(tempName), 
                     'ratio':str(ratio), 
-                    'origin_text':m_etri.getOriginScript(), 
-                    'trans_text':m_etri.getTransScript()
+                    'origin_text':m_sttAPI.getOriginScript(), 
+                    'trans_text':m_sttAPI.getTransScript()
                     })
 
         else:
-            etri = ETRI_STT_API(folderPath, tempName, API_ACCESS_KEY)
-            etri.oneClick()
-            ratio = etri.getRatio()
+            sttAPI = useSTT_API(folderPath, tempName, API_ACCESS_KEY, selectedApi)
+            sttAPI.oneClick()
+            ratio = sttAPI.getRatio()
 
             # 데이터 평가
             if (ratio >= TARGET_RATIO):
@@ -672,8 +764,8 @@ def examinationSTT(p_start:int, p_end:int, folderPath:str, fileName:str):
                 failedList.append({
                     'name':str(tempName), 
                     'ratio':str(ratio), 
-                    'origin_text':etri.getOriginScript(), 
-                    'trans_text':etri.getTransScript()
+                    'origin_text':sttAPI.getOriginScript(), 
+                    'trans_text':sttAPI.getTransScript()
                     })
 
     # 콘솔에 데이터 출력
@@ -707,17 +799,22 @@ def showMenu():
 def Run():
     """
     프로그램 실행
-    - 시작번호, 끝번호, 파일경로, 파일이름이 설정되어있음.
+    - 시작번호, 끝번호, 파일경로, 파일이름, 사용할 API가 설정되어있음.
     """
     start = 7
     end = 7
-    folderPath = os.path.join(os.path.dirname(__file__), 'aihub_data\\hobby_01\\001')
+    folderPath = os.path.join(PROGRAM_PATH, 'aihub_data\\hobby_01\\001')
     fileName = "hobby_0000"
+    selectedApi = "ETRI"
+    # selectedApi = "Google"
+    # selectedApi = "Kakao"
 
     logging.info("-------------------------- Program start --------------------------")
     logging.info("path : " + folderPath)
     logging.info("fileName : " + fileName + " / range : " + str(start) + " ~ " + str(end))
-    examinationSTT(start, end, folderPath, fileName)
+    examinationSTT(start, end, folderPath, fileName, selectedApi)
+    examinationSTT(start, end, folderPath, fileName, "Google")
+    examinationSTT(start, end, folderPath, fileName, "Kakao")
     logging.info("--------------------------- Program end ---------------------------")
 
 
@@ -727,7 +824,7 @@ def exceptionTest(option):
     """
     start = 7
     end = 7
-    folderPath = os.path.join(os.path.dirname(__file__), 'aihub_data\\hobby_01\\001')
+    folderPath = os.path.join(PROGRAM_PATH, 'aihub_data\\hobby_01\\001')
     fileName = "hobby_0000"
 
     if (option & TEST_FOLDERPATH == TEST_FOLDERPATH):
@@ -741,7 +838,7 @@ def exceptionTest(option):
     logging.info("---------------------- Program start ----------------------")
     logging.info("path : " + folderPath)
     logging.info("fileName : " + fileName + " / range : " + str(start) + " ~ " + str(end))
-    examinationSTT(start, end, folderPath, fileName)
+    examinationSTT(start, end, folderPath, fileName, "ETRI")
 
 # -------------------- [Program Start] --------------------
 if __name__ == '__main__':

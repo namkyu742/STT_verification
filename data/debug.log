@@ -1,9 +1,31 @@
-[2021-10-19 14:53:29,127] -------------------------- Program start --------------------------
-[2021-10-19 14:53:29,127] path : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001
-[2021-10-19 14:53:29,127] fileName : hobby_0000 / range : 7 ~ 7
-[2021-10-19 14:53:29,286] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000007.txt
-[2021-10-19 14:53:29,286] open audio file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000007.wav
-[2021-10-19 14:53:30,702] request etri stt
-[2021-10-19 14:53:30,714] hobby_00000007's ratio : 0.8577777777777779
-[2021-10-19 14:53:31,266] Success to save excel file to [data\failed_list\result_2021-10-19_14-53-31.xlsx]
-[2021-10-19 14:53:31,266] --------------------------- Program end ---------------------------
+[2021-10-20 14:15:30,299] -------------------------- Program start --------------------------
+[2021-10-20 14:15:30,300] path : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001
+[2021-10-20 14:15:30,300] fileName : hobby_0000 / range : 7 ~ 7
+[2021-10-20 14:15:30,452] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000007.txt
+[2021-10-20 14:15:31,585] hobby_00000007's ratio : 0.8244444444444444
+[2021-10-20 14:15:32,134] Success to save excel file to [c:\Users\namky\VSCODE\ETRI_STT\data\failed_list\result_2021-10-20_14-15-32.xlsx]
+[2021-10-20 14:15:32,134] --------------------------- Program end ---------------------------
+[2021-10-20 14:15:37,976] -------------------------- Program start --------------------------
+[2021-10-20 14:15:37,976] path : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001
+[2021-10-20 14:15:37,976] fileName : hobby_0000 / range : 7 ~ 7
+[2021-10-20 14:15:38,116] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000007.txt
+[2021-10-20 14:15:38,761] Checking C:\vscode\speech-to-text-project-2021-09-94f5dd5871fe.json for explicit credentials as part of auth process...
+[2021-10-20 14:15:40,175] hobby_00000007's ratio : 0.8221428571428571
+[2021-10-20 14:15:40,710] Success to save excel file to [c:\Users\namky\VSCODE\ETRI_STT\data\failed_list\result_2021-10-20_14-15-40.xlsx]
+[2021-10-20 14:15:40,710] --------------------------- Program end ---------------------------
+[2021-10-20 14:46:12,718] -------------------------- Program start --------------------------
+[2021-10-20 14:46:12,718] path : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001
+[2021-10-20 14:46:12,718] fileName : hobby_0000 / range : 7 ~ 7
+[2021-10-20 14:46:12,867] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000007.txt
+[2021-10-20 14:46:12,867] open audio file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000007.wav
+[2021-10-20 14:46:14,232] request etri stt
+[2021-10-20 14:46:14,243] hobby_00000007's ratio : 0.8577777777777779
+[2021-10-20 14:46:14,782] Success to save excel file to [c:\Users\namky\VSCODE\ETRI_STT\data\failed_list\result_2021-10-20_14-46-14.xlsx]
+[2021-10-20 14:46:14,783] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000007.txt
+[2021-10-20 14:46:15,103] Checking C:\vscode\speech-to-text-project-2021-09-94f5dd5871fe.json for explicit credentials as part of auth process...
+[2021-10-20 14:46:16,453] hobby_00000007's ratio : 0.8221428571428571
+[2021-10-20 14:46:16,465] Success to save excel file to [c:\Users\namky\VSCODE\ETRI_STT\data\failed_list\result_2021-10-20_14-46-16.xlsx]
+[2021-10-20 14:46:16,465] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000007.txt
+[2021-10-20 14:46:17,834] hobby_00000007's ratio : 0.8244444444444444
+[2021-10-20 14:46:17,846] Success to save excel file to [c:\Users\namky\VSCODE\ETRI_STT\data\failed_list\result_2021-10-20_14-46-17.xlsx]
+[2021-10-20 14:46:17,846] --------------------------- Program end ---------------------------
