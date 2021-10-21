@@ -812,8 +812,6 @@ def Run():
     logging.info("path : " + folderPath)
     logging.info("fileName : " + fileName + " / range : " + str(start) + " ~ " + str(end))
     examinationSTT(start, end, folderPath, fileName, selectedApi)
-    examinationSTT(start, end, folderPath, fileName, "Google")
-    examinationSTT(start, end, folderPath, fileName, "Kakao")
     logging.info("--------------------------- Program end ---------------------------")
 
 

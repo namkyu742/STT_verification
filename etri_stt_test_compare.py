@@ -640,11 +640,10 @@ def OutputCompareResultAsEXCEL(resultList, resultList2):
         writeWS.cell(rowCount, 3, round(float(i['ETRI']), 5)).alignment = Alignment(horizontal="center")
         writeWS.cell(rowCount, 4, round(float(i['Google']), 5)).alignment = Alignment(horizontal="center")
         writeWS.cell(rowCount, 5, round(float(i['Kakao']), 5)).alignment = Alignment(horizontal="center")
-        writeWS.cell(rowCount, 6, i['MAX_API'])
+        writeWS.cell(rowCount, 6, i['BEST API'])
         rowCount += 1
 
     # [SUB CONTENT]
-    size = resultList2[5]
     writeWS.cell(3, 8, "ETRI").alignment = Alignment(horizontal="center")
     writeWS.cell(4, 8, "Google").alignment = Alignment(horizontal="center")
     writeWS.cell(5, 8, "Kakao").alignment = Alignment(horizontal="center")
@@ -652,7 +651,6 @@ def OutputCompareResultAsEXCEL(resultList, resultList2):
     for i in range(0, 3):
         writeWS.cell(i+3, 9, resultList2[i]).alignment = Alignment(horizontal="center")
         writeWS.cell(i+3, 10, str(int(resultList2[i])/int(resultList2[3])*100)+"%").alignment = Alignment(horizontal="center")
-
 
     writeWS.cell(7, 8, "데이터셋").alignment = Alignment(horizontal="center")
     writeWS.cell(8, 8, "검사개수").alignment = Alignment(horizontal="center")
@@ -669,9 +667,6 @@ def OutputCompareResultAsEXCEL(resultList, resultList2):
         writeWS.cell(i+7, 8).font = Font(bold=True, color="FFFFFF")
         writeWS.cell(i+7, 8).fill = PatternFill(fgColor="333333", fill_type="solid")
 
-
-
-
     # [SETTING BORDERLINE]
     THIN_BORDER = Border(Side('thin'),Side('thin'),Side('thin'),Side('thin'))
     for rng in writeWS[f'A1:F{rowCount-1}']:
@@ -683,7 +678,6 @@ def OutputCompareResultAsEXCEL(resultList, resultList2):
     for rng in writeWS[f'H7:J9']:
         for cell in rng:
             cell.border = THIN_BORDER
-
 
     # [SAVE FILE]
     from datetime import datetime
@@ -716,7 +710,7 @@ class Worker (threading.Thread):
 
 # -------------------- [Program Start] --------------------
 if __name__ == '__main__':
-    startb = time.time()
+    timeCheckingStart = time.time()
     start = 401
     end = 500
     folderPath = os.path.join(PROGRAM_PATH, 'aihub_data\\hobby_01\\001')
@@ -809,16 +803,14 @@ if __name__ == '__main__':
     if(winner == count3):
         print("Kakao ", end="")
     print()
-    print("RUNTIME :", ShowRunTime(round(time.time() - startb, 0)))
+    print("RUNTIME :", ShowRunTime(round(time.time() - timeCheckingStart, 0)))
     
     resultList2 = []
     resultList2.append(count1)
     resultList2.append(count2)
     resultList2.append(count3)
     resultList2.append(p_size)
-    resultList2.append(ShowRunTime(round(time.time() - startb, 0)))
+    resultList2.append(ShowRunTime(round(time.time() - timeCheckingStart, 0)))
     resultList2.append(USED_DATA_SET)
-
-# 수행시간, 사용데이터셋, 검사개수
 
     OutputCompareResultAsEXCEL(resultList, resultList2)
