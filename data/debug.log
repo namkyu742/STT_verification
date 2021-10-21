@@ -6394,3 +6394,381 @@
 [2021-10-20 17:39:42,521] hobby_00000300's ratio : 1.0
 [2021-10-20 17:39:43,055] hobby_00000300's ratio : 1.0
 [2021-10-20 17:39:43,186] hobby_00000300's ratio : 1.0
+[2021-10-20 17:49:20,207] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000299.txt
+[2021-10-20 17:49:20,207] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000299.txt
+[2021-10-20 17:49:20,207] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000299.txt
+[2021-10-20 17:49:20,208] open audio file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000299.wav
+[2021-10-20 17:49:20,539] Checking C:\vscode\speech-to-text-project-2021-09-94f5dd5871fe.json for explicit credentials as part of auth process...
+[2021-10-20 17:49:21,329] request etri stt
+[2021-10-20 17:49:21,340] hobby_00000299's ratio : 1.0
+[2021-10-20 17:49:21,823] hobby_00000299's ratio : 0.6972222222222223
+[2021-10-20 17:49:21,901] hobby_00000299's ratio : 1.0
+[2021-10-20 17:49:46,187] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000299.txt
+[2021-10-20 17:49:46,187] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000299.txt
+[2021-10-20 17:49:46,187] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000299.txt
+[2021-10-20 17:49:46,187] open audio file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000299.wav
+[2021-10-20 17:49:46,486] Checking C:\vscode\speech-to-text-project-2021-09-94f5dd5871fe.json for explicit credentials as part of auth process...
+[2021-10-20 17:49:47,272] request etri stt
+[2021-10-20 17:49:47,283] hobby_00000299's ratio : 1.0
+[2021-10-20 17:49:47,636] hobby_00000299's ratio : 0.6972222222222223
+[2021-10-20 17:49:47,774] hobby_00000299's ratio : 1.0
+[2021-10-20 17:51:03,205] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000299.txt
+[2021-10-20 17:51:03,205] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000299.txt
+[2021-10-20 17:51:03,205] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000299.txt
+[2021-10-20 17:51:03,205] open audio file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000299.wav
+[2021-10-20 17:51:03,524] Checking C:\vscode\speech-to-text-project-2021-09-94f5dd5871fe.json for explicit credentials as part of auth process...
+[2021-10-20 17:51:04,317] request etri stt
+[2021-10-20 17:51:04,329] hobby_00000299's ratio : 1.0
+[2021-10-20 17:51:04,774] hobby_00000299's ratio : 0.6972222222222223
+[2021-10-20 17:51:04,840] hobby_00000299's ratio : 1.0
+[2021-10-20 17:52:48,588] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000299.txt
+[2021-10-20 17:52:48,588] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000299.txt
+[2021-10-20 17:52:48,588] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000299.txt
+[2021-10-20 17:52:48,589] open audio file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000299.wav
+[2021-10-20 17:52:48,881] Checking C:\vscode\speech-to-text-project-2021-09-94f5dd5871fe.json for explicit credentials as part of auth process...
+[2021-10-20 17:52:49,677] request etri stt
+[2021-10-20 17:52:49,688] hobby_00000299's ratio : 1.0
+[2021-10-20 17:52:50,172] hobby_00000299's ratio : 1.0
+[2021-10-20 17:52:50,246] hobby_00000299's ratio : 0.6972222222222223
+[2021-10-20 17:52:59,727] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000299.txt
+[2021-10-20 17:52:59,728] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000299.txt
+[2021-10-20 17:52:59,728] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000299.txt
+[2021-10-20 17:52:59,728] open audio file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000299.wav
+[2021-10-20 17:53:00,021] Checking C:\vscode\speech-to-text-project-2021-09-94f5dd5871fe.json for explicit credentials as part of auth process...
+[2021-10-20 17:53:00,831] request etri stt
+[2021-10-20 17:53:00,842] hobby_00000299's ratio : 1.0
+[2021-10-20 17:53:01,189] hobby_00000299's ratio : 0.6972222222222223
+[2021-10-20 17:53:01,309] hobby_00000299's ratio : 1.0
+[2021-10-20 17:54:05,646] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000299.txt
+[2021-10-20 17:54:05,646] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000299.txt
+[2021-10-20 17:54:05,646] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000299.txt
+[2021-10-20 17:54:05,646] open audio file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000299.wav
+[2021-10-20 17:54:05,943] Checking C:\vscode\speech-to-text-project-2021-09-94f5dd5871fe.json for explicit credentials as part of auth process...
+[2021-10-20 17:54:06,756] request etri stt
+[2021-10-20 17:54:06,766] hobby_00000299's ratio : 1.0
+[2021-10-20 17:54:07,257] hobby_00000299's ratio : 0.6972222222222223
+[2021-10-20 17:54:07,313] hobby_00000299's ratio : 1.0
+[2021-10-20 17:54:26,076] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000300.txt
+[2021-10-20 17:54:26,076] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000300.txt
+[2021-10-20 17:54:26,076] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000300.txt
+[2021-10-20 17:54:26,076] open audio file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000300.wav
+[2021-10-20 17:54:26,374] Checking C:\vscode\speech-to-text-project-2021-09-94f5dd5871fe.json for explicit credentials as part of auth process...
+[2021-10-20 17:54:27,216] request etri stt
+[2021-10-20 17:54:27,227] hobby_00000300's ratio : 1.0
+[2021-10-20 17:54:27,557] hobby_00000300's ratio : 1.0
+[2021-10-20 17:54:27,632] hobby_00000300's ratio : 1.0
+[2021-10-20 17:54:54,482] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000300.txt
+[2021-10-20 17:54:54,482] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000300.txt
+[2021-10-20 17:54:54,482] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000300.txt
+[2021-10-20 17:54:54,482] open audio file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000300.wav
+[2021-10-20 17:54:54,778] Checking C:\vscode\speech-to-text-project-2021-09-94f5dd5871fe.json for explicit credentials as part of auth process...
+[2021-10-20 17:54:55,618] request etri stt
+[2021-10-20 17:54:55,629] hobby_00000300's ratio : 1.0
+[2021-10-20 17:54:55,821] hobby_00000300's ratio : 1.0
+[2021-10-20 17:54:55,925] hobby_00000300's ratio : 1.0
+[2021-10-20 17:56:00,207] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000300.txt
+[2021-10-20 17:56:00,207] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000300.txt
+[2021-10-20 17:56:00,207] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000300.txt
+[2021-10-20 17:56:00,208] open audio file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000300.wav
+[2021-10-20 17:56:00,512] Checking C:\vscode\speech-to-text-project-2021-09-94f5dd5871fe.json for explicit credentials as part of auth process...
+[2021-10-20 17:56:01,351] request etri stt
+[2021-10-20 17:56:01,362] hobby_00000300's ratio : 1.0
+[2021-10-20 17:56:01,566] hobby_00000300's ratio : 1.0
+[2021-10-20 17:56:01,784] hobby_00000300's ratio : 1.0
+[2021-10-20 17:56:28,351] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000300.txt
+[2021-10-20 17:56:28,351] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000300.txt
+[2021-10-20 17:56:28,351] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000300.txt
+[2021-10-20 17:56:28,351] open audio file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000300.wav
+[2021-10-20 17:56:28,647] Checking C:\vscode\speech-to-text-project-2021-09-94f5dd5871fe.json for explicit credentials as part of auth process...
+[2021-10-20 17:56:29,473] request etri stt
+[2021-10-20 17:56:29,483] hobby_00000300's ratio : 1.0
+[2021-10-20 17:56:29,715] hobby_00000300's ratio : 1.0
+[2021-10-20 17:56:31,387] hobby_00000300's ratio : 1.0
+[2021-10-20 17:56:56,470] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000300.txt
+[2021-10-20 17:56:56,470] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000300.txt
+[2021-10-20 17:56:56,470] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000300.txt
+[2021-10-20 17:56:56,471] open audio file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000300.wav
+[2021-10-20 17:56:56,793] Checking C:\vscode\speech-to-text-project-2021-09-94f5dd5871fe.json for explicit credentials as part of auth process...
+[2021-10-20 17:56:57,593] request etri stt
+[2021-10-20 17:56:57,604] hobby_00000300's ratio : 1.0
+[2021-10-20 17:56:57,834] hobby_00000300's ratio : 1.0
+[2021-10-20 17:56:58,050] hobby_00000300's ratio : 1.0
+[2021-10-20 17:57:49,638] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000300.txt
+[2021-10-20 17:57:49,638] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000300.txt
+[2021-10-20 17:57:49,638] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000300.txt
+[2021-10-20 17:57:49,639] open audio file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000300.wav
+[2021-10-20 17:57:49,933] Checking C:\vscode\speech-to-text-project-2021-09-94f5dd5871fe.json for explicit credentials as part of auth process...
+[2021-10-20 17:57:50,756] request etri stt
+[2021-10-20 17:57:50,767] hobby_00000300's ratio : 1.0
+[2021-10-20 17:57:50,990] hobby_00000300's ratio : 1.0
+[2021-10-20 17:57:51,126] hobby_00000300's ratio : 1.0
+[2021-10-20 17:58:04,685] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000301.txt
+[2021-10-20 17:58:04,685] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000301.txt
+[2021-10-20 17:58:04,685] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000301.txt
+[2021-10-20 17:58:04,685] open audio file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000301.wav
+[2021-10-20 17:58:04,976] Checking C:\vscode\speech-to-text-project-2021-09-94f5dd5871fe.json for explicit credentials as part of auth process...
+[2021-10-20 17:58:05,783] request etri stt
+[2021-10-20 17:58:05,794] hobby_00000301's ratio : 0.9803921568627452
+[2021-10-20 17:58:05,796] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000302.txt
+[2021-10-20 17:58:05,797] open audio file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000302.wav
+[2021-10-20 17:58:06,171] hobby_00000301's ratio : 0.9607843137254902
+[2021-10-20 17:58:06,172] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000302.txt
+[2021-10-20 17:58:06,172] Checking C:\vscode\speech-to-text-project-2021-09-94f5dd5871fe.json for explicit credentials as part of auth process...
+[2021-10-20 17:58:06,236] hobby_00000301's ratio : 0.9607843137254902
+[2021-10-20 17:58:06,236] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000302.txt
+[2021-10-20 17:58:06,946] request etri stt
+[2021-10-20 17:58:06,946] hobby_00000302's ratio : 1.0
+[2021-10-20 17:58:06,949] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000303.txt
+[2021-10-20 17:58:06,949] open audio file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000303.wav
+[2021-10-20 17:58:07,430] hobby_00000302's ratio : 1.0
+[2021-10-20 17:58:07,431] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000303.txt
+[2021-10-20 17:58:07,431] Checking C:\vscode\speech-to-text-project-2021-09-94f5dd5871fe.json for explicit credentials as part of auth process...
+[2021-10-20 17:58:07,744] hobby_00000302's ratio : 0.9822134387351779
+[2021-10-20 17:58:07,745] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000303.txt
+[2021-10-20 17:58:07,882] request etri stt
+[2021-10-20 17:58:07,882] hobby_00000303's ratio : 1.0
+[2021-10-20 17:58:07,884] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000304.txt
+[2021-10-20 17:58:07,884] open audio file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000304.wav
+[2021-10-20 17:58:08,634] hobby_00000303's ratio : 1.0
+[2021-10-20 17:58:08,635] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000304.txt
+[2021-10-20 17:58:08,635] Checking C:\vscode\speech-to-text-project-2021-09-94f5dd5871fe.json for explicit credentials as part of auth process...
+[2021-10-20 17:58:09,246] hobby_00000303's ratio : 1.0
+[2021-10-20 17:58:09,247] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000304.txt
+[2021-10-20 17:58:09,345] request etri stt
+[2021-10-20 17:58:09,345] hobby_00000304's ratio : 0.9818181818181818
+[2021-10-20 17:58:09,348] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000305.txt
+[2021-10-20 17:58:09,348] open audio file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000305.wav
+[2021-10-20 17:58:10,728] request etri stt
+[2021-10-20 17:58:10,728] hobby_00000305's ratio : 1.0
+[2021-10-20 17:58:10,731] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000306.txt
+[2021-10-20 17:58:10,732] open audio file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000306.wav
+[2021-10-20 17:58:10,845] hobby_00000304's ratio : 1.0
+[2021-10-20 17:58:10,845] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000305.txt
+[2021-10-20 17:58:10,845] Checking C:\vscode\speech-to-text-project-2021-09-94f5dd5871fe.json for explicit credentials as part of auth process...
+[2021-10-20 17:58:11,048] hobby_00000304's ratio : 1.0
+[2021-10-20 17:58:11,049] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000305.txt
+[2021-10-20 17:58:11,774] request etri stt
+[2021-10-20 17:58:11,775] hobby_00000306's ratio : 1.0
+[2021-10-20 17:58:11,777] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000307.txt
+[2021-10-20 17:58:11,778] open audio file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000307.wav
+[2021-10-20 17:58:12,128] hobby_00000305's ratio : 1.0
+[2021-10-20 17:58:12,129] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000306.txt
+[2021-10-20 17:58:12,129] Checking C:\vscode\speech-to-text-project-2021-09-94f5dd5871fe.json for explicit credentials as part of auth process...
+[2021-10-20 17:58:12,917] hobby_00000305's ratio : 1.0
+[2021-10-20 17:58:12,917] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000306.txt
+[2021-10-20 17:58:12,973] request etri stt
+[2021-10-20 17:58:12,973] hobby_00000307's ratio : 1.0
+[2021-10-20 17:58:12,976] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000308.txt
+[2021-10-20 17:58:12,976] open audio file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000308.wav
+[2021-10-20 17:58:13,269] hobby_00000306's ratio : 1.0
+[2021-10-20 17:58:13,270] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000307.txt
+[2021-10-20 17:58:13,270] Checking C:\vscode\speech-to-text-project-2021-09-94f5dd5871fe.json for explicit credentials as part of auth process...
+[2021-10-20 17:58:13,989] request etri stt
+[2021-10-20 17:58:13,989] hobby_00000308's ratio : 1.0
+[2021-10-20 17:58:13,991] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000309.txt
+[2021-10-20 17:58:13,991] open audio file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000309.wav
+[2021-10-20 17:58:14,373] hobby_00000306's ratio : 1.0
+[2021-10-20 17:58:14,374] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000307.txt
+[2021-10-20 17:58:14,958] request etri stt
+[2021-10-20 17:58:14,958] hobby_00000309's ratio : 1.0
+[2021-10-20 17:58:14,961] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000310.txt
+[2021-10-20 17:58:14,961] open audio file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000310.wav
+[2021-10-20 17:58:15,945] request etri stt
+[2021-10-20 17:58:15,945] hobby_00000310's ratio : 1.0
+[2021-10-20 17:58:15,947] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000311.txt
+[2021-10-20 17:58:15,948] open audio file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000311.wav
+[2021-10-20 17:58:15,964] hobby_00000307's ratio : 1.0
+[2021-10-20 17:58:15,964] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000308.txt
+[2021-10-20 17:58:16,074] hobby_00000307's ratio : 1.0
+[2021-10-20 17:58:16,075] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000308.txt
+[2021-10-20 17:58:16,075] Checking C:\vscode\speech-to-text-project-2021-09-94f5dd5871fe.json for explicit credentials as part of auth process...
+[2021-10-20 17:58:17,202] hobby_00000308's ratio : 1.0
+[2021-10-20 17:58:17,203] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000309.txt
+[2021-10-20 17:58:17,203] Checking C:\vscode\speech-to-text-project-2021-09-94f5dd5871fe.json for explicit credentials as part of auth process...
+[2021-10-20 17:58:17,227] request etri stt
+[2021-10-20 17:58:17,227] hobby_00000311's ratio : 1.0
+[2021-10-20 17:58:17,231] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000312.txt
+[2021-10-20 17:58:17,231] open audio file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000312.wav
+[2021-10-20 17:58:17,275] hobby_00000308's ratio : 1.0
+[2021-10-20 17:58:17,275] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000309.txt
+[2021-10-20 17:58:18,379] hobby_00000309's ratio : 1.0
+[2021-10-20 17:58:18,379] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000310.txt
+[2021-10-20 17:58:18,702] request etri stt
+[2021-10-20 17:58:18,702] hobby_00000312's ratio : 1.0
+[2021-10-20 17:58:18,705] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000313.txt
+[2021-10-20 17:58:18,705] open audio file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000313.wav
+[2021-10-20 17:58:18,761] hobby_00000309's ratio : 1.0
+[2021-10-20 17:58:18,762] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000310.txt
+[2021-10-20 17:58:18,762] Checking C:\vscode\speech-to-text-project-2021-09-94f5dd5871fe.json for explicit credentials as part of auth process...
+[2021-10-20 17:58:19,810] hobby_00000310's ratio : 1.0
+[2021-10-20 17:58:19,810] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000311.txt
+[2021-10-20 17:58:19,893] request etri stt
+[2021-10-20 17:58:19,893] hobby_00000313's ratio : 1.0
+[2021-10-20 17:58:19,897] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000314.txt
+[2021-10-20 17:58:19,897] open audio file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000314.wav
+[2021-10-20 17:58:20,097] hobby_00000310's ratio : 1.0
+[2021-10-20 17:58:20,098] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000311.txt
+[2021-10-20 17:58:20,098] Checking C:\vscode\speech-to-text-project-2021-09-94f5dd5871fe.json for explicit credentials as part of auth process...
+[2021-10-20 17:58:20,901] request etri stt
+[2021-10-20 17:58:20,901] hobby_00000314's ratio : 1.0
+[2021-10-20 17:58:20,904] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000315.txt
+[2021-10-20 17:58:20,904] open audio file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000315.wav
+[2021-10-20 17:58:21,446] hobby_00000311's ratio : 1.0
+[2021-10-20 17:58:21,447] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000312.txt
+[2021-10-20 17:58:21,447] Checking C:\vscode\speech-to-text-project-2021-09-94f5dd5871fe.json for explicit credentials as part of auth process...
+[2021-10-20 17:58:22,049] hobby_00000311's ratio : 1.0
+[2021-10-20 17:58:22,050] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000312.txt
+[2021-10-20 17:58:22,070] request etri stt
+[2021-10-20 17:58:22,070] hobby_00000315's ratio : 1.0
+[2021-10-20 17:58:22,073] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000316.txt
+[2021-10-20 17:58:22,073] open audio file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000316.wav
+[2021-10-20 17:58:22,798] hobby_00000312's ratio : 1.0
+[2021-10-20 17:58:22,798] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000313.txt
+[2021-10-20 17:58:22,799] Checking C:\vscode\speech-to-text-project-2021-09-94f5dd5871fe.json for explicit credentials as part of auth process...
+[2021-10-20 17:58:23,176] request etri stt
+[2021-10-20 17:58:23,176] hobby_00000316's ratio : 0.9714285714285714
+[2021-10-20 17:58:23,179] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000317.txt
+[2021-10-20 17:58:23,180] open audio file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000317.wav
+[2021-10-20 17:58:23,633] hobby_00000312's ratio : 1.0
+[2021-10-20 17:58:23,634] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000313.txt
+[2021-10-20 17:58:24,063] hobby_00000313's ratio : 1.0
+[2021-10-20 17:58:24,064] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000314.txt
+[2021-10-20 17:58:24,064] Checking C:\vscode\speech-to-text-project-2021-09-94f5dd5871fe.json for explicit credentials as part of auth process...
+[2021-10-20 17:58:24,311] request etri stt
+[2021-10-20 17:58:24,311] hobby_00000317's ratio : 0.9666666666666666
+[2021-10-20 17:58:24,314] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000318.txt
+[2021-10-20 17:58:24,314] open audio file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000318.wav
+[2021-10-20 17:58:25,113] hobby_00000313's ratio : 1.0
+[2021-10-20 17:58:25,114] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000314.txt
+[2021-10-20 17:58:25,221] hobby_00000314's ratio : 1.0
+[2021-10-20 17:58:25,221] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000315.txt
+[2021-10-20 17:58:25,221] Checking C:\vscode\speech-to-text-project-2021-09-94f5dd5871fe.json for explicit credentials as part of auth process...
+[2021-10-20 17:58:25,673] request etri stt
+[2021-10-20 17:58:25,673] hobby_00000318's ratio : 1.0
+[2021-10-20 17:58:25,677] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000319.txt
+[2021-10-20 17:58:25,677] open audio file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000319.wav
+[2021-10-20 17:58:26,484] hobby_00000315's ratio : 1.0
+[2021-10-20 17:58:26,485] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000316.txt
+[2021-10-20 17:58:26,485] Checking C:\vscode\speech-to-text-project-2021-09-94f5dd5871fe.json for explicit credentials as part of auth process...
+[2021-10-20 17:58:26,676] hobby_00000314's ratio : 0.9616666666666668
+[2021-10-20 17:58:26,677] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000315.txt
+[2021-10-20 17:58:26,977] request etri stt
+[2021-10-20 17:58:26,977] hobby_00000319's ratio : 1.0
+[2021-10-20 17:58:26,980] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000320.txt
+[2021-10-20 17:58:26,980] open audio file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000320.wav
+[2021-10-20 17:58:27,664] hobby_00000316's ratio : 1.0
+[2021-10-20 17:58:27,665] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000317.txt
+[2021-10-20 17:58:27,665] Checking C:\vscode\speech-to-text-project-2021-09-94f5dd5871fe.json for explicit credentials as part of auth process...
+[2021-10-20 17:58:28,094] hobby_00000315's ratio : 1.0
+[2021-10-20 17:58:28,095] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000316.txt
+[2021-10-20 17:58:28,386] request etri stt
+[2021-10-20 17:58:28,386] hobby_00000320's ratio : 1.0
+[2021-10-20 17:58:28,884] hobby_00000317's ratio : 0.9666666666666666
+[2021-10-20 17:58:28,884] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000318.txt
+[2021-10-20 17:58:28,884] Checking C:\vscode\speech-to-text-project-2021-09-94f5dd5871fe.json for explicit credentials as part of auth process...
+[2021-10-20 17:58:29,701] hobby_00000316's ratio : 0.9714285714285714
+[2021-10-20 17:58:29,702] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000317.txt
+[2021-10-20 17:58:30,212] hobby_00000318's ratio : 1.0
+[2021-10-20 17:58:30,213] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000319.txt
+[2021-10-20 17:58:30,213] Checking C:\vscode\speech-to-text-project-2021-09-94f5dd5871fe.json for explicit credentials as part of auth process...
+[2021-10-20 17:58:31,008] hobby_00000317's ratio : 0.9666666666666666
+[2021-10-20 17:58:31,009] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000318.txt
+[2021-10-20 17:58:31,476] hobby_00000319's ratio : 1.0
+[2021-10-20 17:58:31,477] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000320.txt
+[2021-10-20 17:58:31,477] Checking C:\vscode\speech-to-text-project-2021-09-94f5dd5871fe.json for explicit credentials as part of auth process...
+[2021-10-20 17:58:32,611] hobby_00000318's ratio : 1.0
+[2021-10-20 17:58:32,611] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000319.txt
+[2021-10-20 17:58:32,910] hobby_00000320's ratio : 0.9157894736842105
+[2021-10-20 17:58:34,118] hobby_00000319's ratio : 0.95
+[2021-10-20 17:58:34,119] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000320.txt
+[2021-10-20 17:58:35,933] hobby_00000320's ratio : 1.0
+[2021-10-20 18:00:51,531] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000301.txt
+[2021-10-20 18:00:51,531] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000301.txt
+[2021-10-20 18:00:51,531] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000301.txt
+[2021-10-20 18:00:51,531] open audio file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000301.wav
+[2021-10-20 18:00:51,828] Checking C:\vscode\speech-to-text-project-2021-09-94f5dd5871fe.json for explicit credentials as part of auth process...
+[2021-10-20 18:00:52,664] request etri stt
+[2021-10-20 18:00:52,675] hobby_00000301's ratio : 0.9803921568627452
+[2021-10-20 18:00:52,675] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000302.txt
+[2021-10-20 18:00:52,675] open audio file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000302.wav
+[2021-10-20 18:00:52,920] hobby_00000301's ratio : 0.9607843137254902
+[2021-10-20 18:00:52,921] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000302.txt
+[2021-10-20 18:00:52,921] Checking C:\vscode\speech-to-text-project-2021-09-94f5dd5871fe.json for explicit credentials as part of auth process...
+[2021-10-20 18:00:53,091] hobby_00000301's ratio : 0.9607843137254902
+[2021-10-20 18:00:53,113] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000302.txt
+[2021-10-20 18:00:53,798] request etri stt
+[2021-10-20 18:00:53,798] hobby_00000302's ratio : 1.0
+[2021-10-20 18:00:53,798] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000303.txt
+[2021-10-20 18:00:53,799] open audio file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000303.wav
+[2021-10-20 18:00:54,168] hobby_00000302's ratio : 1.0
+[2021-10-20 18:00:54,169] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000303.txt
+[2021-10-20 18:00:54,169] Checking C:\vscode\speech-to-text-project-2021-09-94f5dd5871fe.json for explicit credentials as part of auth process...
+[2021-10-20 18:00:54,715] request etri stt
+[2021-10-20 18:00:54,716] hobby_00000303's ratio : 1.0
+[2021-10-20 18:00:54,716] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000304.txt
+[2021-10-20 18:00:54,716] open audio file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000304.wav
+[2021-10-20 18:00:54,911] hobby_00000302's ratio : 0.9822134387351779
+[2021-10-20 18:00:54,912] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000303.txt
+[2021-10-20 18:00:55,319] hobby_00000303's ratio : 1.0
+[2021-10-20 18:00:55,320] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000304.txt
+[2021-10-20 18:00:55,320] Checking C:\vscode\speech-to-text-project-2021-09-94f5dd5871fe.json for explicit credentials as part of auth process...
+[2021-10-20 18:00:56,156] request etri stt
+[2021-10-20 18:00:56,156] hobby_00000304's ratio : 0.9818181818181818
+[2021-10-20 18:00:56,157] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000305.txt
+[2021-10-20 18:00:56,157] open audio file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000305.wav
+[2021-10-20 18:00:56,418] hobby_00000303's ratio : 1.0
+[2021-10-20 18:00:56,418] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000304.txt
+[2021-10-20 18:00:56,678] hobby_00000304's ratio : 1.0
+[2021-10-20 18:00:56,678] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000305.txt
+[2021-10-20 18:00:56,679] Checking C:\vscode\speech-to-text-project-2021-09-94f5dd5871fe.json for explicit credentials as part of auth process...
+[2021-10-20 18:00:57,572] request etri stt
+[2021-10-20 18:00:57,572] hobby_00000305's ratio : 1.0
+[2021-10-20 18:00:58,372] hobby_00000305's ratio : 1.0
+[2021-10-20 18:00:58,559] hobby_00000304's ratio : 1.0
+[2021-10-20 18:00:58,560] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000305.txt
+[2021-10-20 18:01:00,431] hobby_00000305's ratio : 1.0
+[2021-10-20 18:01:57,569] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000301.txt
+[2021-10-20 18:01:57,569] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000301.txt
+[2021-10-20 18:01:57,569] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000301.txt
+[2021-10-20 18:01:57,569] open audio file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000301.wav
+[2021-10-20 18:01:57,865] Checking C:\vscode\speech-to-text-project-2021-09-94f5dd5871fe.json for explicit credentials as part of auth process...
+[2021-10-20 18:01:58,824] request etri stt
+[2021-10-20 18:01:58,835] hobby_00000301's ratio : 0.9803921568627452
+[2021-10-20 18:01:58,836] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000302.txt
+[2021-10-20 18:01:58,836] open audio file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000302.wav
+[2021-10-20 18:01:59,102] hobby_00000301's ratio : 0.9607843137254902
+[2021-10-20 18:01:59,102] hobby_00000301's ratio : 0.9607843137254902
+[2021-10-20 18:01:59,103] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000302.txt
+[2021-10-20 18:01:59,103] Checking C:\vscode\speech-to-text-project-2021-09-94f5dd5871fe.json for explicit credentials as part of auth process...
+[2021-10-20 18:01:59,103] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000302.txt
+[2021-10-20 18:02:00,115] request etri stt
+[2021-10-20 18:02:00,115] hobby_00000302's ratio : 1.0
+[2021-10-20 18:02:00,116] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000303.txt
+[2021-10-20 18:02:00,116] open audio file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000303.wav
+[2021-10-20 18:02:00,326] hobby_00000302's ratio : 1.0
+[2021-10-20 18:02:00,327] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000303.txt
+[2021-10-20 18:02:00,327] Checking C:\vscode\speech-to-text-project-2021-09-94f5dd5871fe.json for explicit credentials as part of auth process...
+[2021-10-20 18:02:00,942] hobby_00000302's ratio : 0.9822134387351779
+[2021-10-20 18:02:00,943] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000303.txt
+[2021-10-20 18:02:01,068] request etri stt
+[2021-10-20 18:02:01,068] hobby_00000303's ratio : 1.0
+[2021-10-20 18:02:01,069] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000304.txt
+[2021-10-20 18:02:01,069] open audio file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000304.wav
+[2021-10-20 18:02:01,540] hobby_00000303's ratio : 1.0
+[2021-10-20 18:02:01,540] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000304.txt
+[2021-10-20 18:02:01,540] Checking C:\vscode\speech-to-text-project-2021-09-94f5dd5871fe.json for explicit credentials as part of auth process...
+[2021-10-20 18:02:02,499] hobby_00000303's ratio : 1.0
+[2021-10-20 18:02:02,499] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000304.txt
+[2021-10-20 18:02:02,572] request etri stt
+[2021-10-20 18:02:02,573] hobby_00000304's ratio : 0.9818181818181818
+[2021-10-20 18:02:02,573] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000305.txt
+[2021-10-20 18:02:02,573] open audio file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000305.wav
+[2021-10-20 18:02:02,853] hobby_00000304's ratio : 1.0
+[2021-10-20 18:02:02,854] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000305.txt
+[2021-10-20 18:02:02,854] Checking C:\vscode\speech-to-text-project-2021-09-94f5dd5871fe.json for explicit credentials as part of auth process...
+[2021-10-20 18:02:04,033] request etri stt
+[2021-10-20 18:02:04,033] hobby_00000305's ratio : 1.0
+[2021-10-20 18:02:04,220] hobby_00000305's ratio : 1.0
+[2021-10-20 18:02:04,355] hobby_00000304's ratio : 1.0
+[2021-10-20 18:02:04,356] Success to open script file : c:\Users\namky\VSCODE\ETRI_STT\aihub_data\hobby_01\001\hobby_00000305.txt
+[2021-10-20 18:02:06,230] hobby_00000305's ratio : 1.0

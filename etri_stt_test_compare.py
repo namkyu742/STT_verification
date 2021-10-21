@@ -77,6 +77,7 @@ os 라이브러리 사용법2 (https://yganalyst.github.io/data_handling/memo_1/
 """
 
 # ----------------------- [imports] -----------------------
+
 from subprocess import REALTIME_PRIORITY_CLASS
 import urllib3
 import json
@@ -92,13 +93,7 @@ import requests
 USED_API = "ETRI STT"
 USED_DATA_SET = "한국인대화음성"
 TARGET_RATIO = 0.95
-# FLAGS_FOR_EXCEPTION
-TEST_FOLDERPATH = 0b000001
-TEST_FILENAME   = 0b000010
-TEST_RANGE      = 0b000100
-
 PROGRAM_PATH = os.path.dirname(__file__)
-
 
 # For use Thread
 import threading
@@ -108,30 +103,6 @@ ratio_list2 = []
 ratio_list3 = []
 lock = threading.Lock()
 
-# ------------------- [for CODE LOGGING] -------------------
-# 참고 링크 (https://wikidocs.net/123324)
-from logging.config import dictConfig
-import logging
-dictConfig({
-    'version': 1,
-    'formatters': {
-        'default': {
-            'format': '[%(asctime)s] %(message)s',
-        }
-    },
-    'handlers': {
-        'file': {
-            'level': 'DEBUG',
-            'class': 'logging.FileHandler',
-            'filename': PROGRAM_PATH + '/data/debug.log',
-            'formatter': 'default',
-        },
-    },
-    'root': {
-        'level': 'DEBUG',
-        'handlers': ['file']
-    }
-})
 
 # ------------------ [Speech To Text API] ------------------
 class useSTT_API():
@@ -164,17 +135,14 @@ class useSTT_API():
         elif (selectedApi == "Kakao"): self.selectedApiAccessKey = apiAccessKey['Kakao']
         elif (selectedApi == "Google"): self.selectedApiAccessKey = apiAccessKey['Google']
         else:
-            logging.info("Incorrect API selection : " + selectedApi)
             print("Incorrect API selection : " + selectedApi)
             exit()
 
         filePath = os.path.join(self.folderPath, self.fileName + ".txt")
         try:
             scriptFile = open(filePath, mode='rt', encoding='UTF8')
-            logging.info("Success to open script file : " + filePath)
             self.originScript = scriptFile.read()
         except Exception as e:
-            logging.info("Failed to open script file : " + filePath)
             print("exception: ", e)
         finally:
             scriptFile.close()
@@ -212,9 +180,7 @@ class useSTT_API():
             file = open(audiofilePath, "rb")
         except Exception as e:
             print("Exception:", e)
-            logging.info("occur Exception : " + e)
             exit()
-        logging.info("open audio file : " + audiofilePath)
         audioContents = base64.b64encode(file.read()).decode("utf8")
         file.close()
         
@@ -233,7 +199,6 @@ class useSTT_API():
             headers={"Content-Type": "application/json; charset=UTF-8"},
             body=json.dumps(requestJson)
         )
-        logging.info("request etri stt")
 
         data = json.loads(response.data.decode("utf-8", errors='ignore'))
         return data['return_object']['recognized']
@@ -291,7 +256,6 @@ class useSTT_API():
         elif (self.selectedApi == "Google") : self.transScript = self.googleSTTEngine()
         elif (self.selectedApi == "Kakao") : self.transScript = self.kakaoSTTEngine()
         else:
-            logging.info("Incorrect API selection")
             exit()
       
     def checkDoubleCopying(self):
@@ -399,7 +363,6 @@ class useSTT_API():
         """
         import jellyfish
     
-        text1 = self.getOriginScript()
         text2 = self.transScript
         
         text2 = text2.upper()   # 영어 소문자를 대문자로 변경
@@ -409,17 +372,6 @@ class useSTT_API():
         text4 = self.checkSpacingandPunctuationMarks(text2)
         
         ratio = jellyfish.jaro_winkler_similarity(text3, text4)
-        if (option == 1):
-            if (ratio < TARGET_RATIO):
-                print('[RESULT] :', self.fileName)
-                print('OriginalScript    :', text1)
-                print('TranScript        :', text2)
-                print('OriginalScript[T] :', text3)
-                print('TranScript[T]     :', text4)
-                print('RATIO :', ratio)
-                print('------------------------------------------------------------------')
-
-        logging.info(self.fileName + "'s ratio : " + str(ratio))
         return ratio
 
     def oneClick(self):
@@ -532,7 +484,6 @@ def examinationSTT(p_start:int, p_end:int, folderPath:str, fileName:str, selecte
     endNum = p_end         # 검사 끝 번호
     numSize = endNum - startNum + 1  # 작업량    
     if (numSize <= 0):       # [Error : Input range]
-        logging.info("It's out of the range of files.")
         print("It's out of the range of files.")
         exit()
 
@@ -552,7 +503,6 @@ def examinationSTT(p_start:int, p_end:int, folderPath:str, fileName:str, selecte
         audiofilePath = os.path.join(folderPath, tempName + '.wav')
         # 파일이 존재하지 않을 경우 count 증가시키고 다음 파일로 넘어감
         if (os.path.isfile(audiofilePath) == False):
-            logging.info("Path ["+audiofilePath+"] is no file")
             print("There is no file")
             noFileCount += 1
             missingList.append({
@@ -630,6 +580,117 @@ def examinationSTT(p_start:int, p_end:int, folderPath:str, fileName:str, selecte
         N_list.append({"name":tempName, "ratio":ratio})
     return N_list
 
+def OutputCompareResultAsEXCEL(resultList, resultList2):
+    """
+    xlsx 파일에 API 성능 비교 결과를 기록
+
+    Args:
+        resultList ([type]): [description]
+    """
+    from openpyxl import Workbook
+    from openpyxl.styles import Border, Side, Font, Alignment, PatternFill
+    writeWB = Workbook()
+    writeWS = writeWB.active
+
+    # [TITLE]
+    writeWS.merge_cells('A1:F1')
+    writeWS.merge_cells('H1:J1')
+    writeWS.cell(1, 1, "Voice Recognition Engine Performance Comparison").alignment = Alignment(horizontal="center", vertical="center")
+    writeWS.cell(1, 1).font = Font(size=15, bold=True)
+    writeWS.cell(1, 8, "RESULT").alignment = Alignment(horizontal="center", vertical="center")
+    writeWS.cell(1, 8).font = Font(size=15, bold=True)
+    writeWS.row_dimensions[1].height = 40
+
+    # [ADJUST EXCEL COLUMN SIZE]
+    writeWS.column_dimensions['A'].width = 6
+    writeWS.column_dimensions['B'].width = 16
+    writeWS.column_dimensions['C'].width = 10
+    writeWS.column_dimensions['D'].width = 10
+    writeWS.column_dimensions['E'].width = 10
+    writeWS.column_dimensions['F'].width = 22
+
+    writeWS.column_dimensions['H'].width = 10
+    writeWS.column_dimensions['I'].width = 10
+    writeWS.column_dimensions['J'].width = 12
+
+    # [SUB TITLE]
+    wsSubTitle1 = []
+    wsSubTitle1.append({"locate":1, "text":"NO"})
+    wsSubTitle1.append({"locate":2, "text":"FILENAME"})
+    wsSubTitle1.append({"locate":3, "text":"ETRI"})
+    wsSubTitle1.append({"locate":4, "text":"Google"})
+    wsSubTitle1.append({"locate":5, "text":"Kakao"})
+    wsSubTitle1.append({"locate":6, "text":"MAX API"})
+    
+    wsSubTitle1.append({"locate":8, "text":"API"})
+    wsSubTitle1.append({"locate":9, "text":"COUNT"})
+    wsSubTitle1.append({"locate":10, "text":"PERCENT"})
+
+
+    for i in range(0, 9):
+        writeWS.cell(2, wsSubTitle1[i]['locate'], wsSubTitle1[i]["text"])
+        writeWS.cell(2, wsSubTitle1[i]['locate']).alignment = Alignment(horizontal="center", vertical="center")
+        writeWS.cell(2, wsSubTitle1[i]['locate']).font = Font(bold=True, color="FFFFFF")
+        writeWS.cell(2, wsSubTitle1[i]['locate']).fill = PatternFill(fgColor="333333", fill_type="solid")
+
+    rowCount = 3
+    for i in resultList:
+        writeWS.cell(rowCount, 1, rowCount-2).alignment = Alignment(horizontal="center")
+        writeWS.cell(rowCount, 2, i['filename']).alignment = Alignment(horizontal="center")
+        writeWS.cell(rowCount, 3, round(float(i['ETRI']), 5)).alignment = Alignment(horizontal="center")
+        writeWS.cell(rowCount, 4, round(float(i['Google']), 5)).alignment = Alignment(horizontal="center")
+        writeWS.cell(rowCount, 5, round(float(i['Kakao']), 5)).alignment = Alignment(horizontal="center")
+        writeWS.cell(rowCount, 6, i['MAX_API'])
+        rowCount += 1
+
+    # [SUB CONTENT]
+    size = resultList2[5]
+    writeWS.cell(3, 8, "ETRI").alignment = Alignment(horizontal="center")
+    writeWS.cell(4, 8, "Google").alignment = Alignment(horizontal="center")
+    writeWS.cell(5, 8, "Kakao").alignment = Alignment(horizontal="center")
+    print(resultList2[5])
+    for i in range(0, 3):
+        writeWS.cell(i+3, 9, resultList2[i]).alignment = Alignment(horizontal="center")
+        writeWS.cell(i+3, 10, str(int(resultList2[i])/int(resultList2[3])*100)+"%").alignment = Alignment(horizontal="center")
+
+
+    writeWS.cell(7, 8, "데이터셋").alignment = Alignment(horizontal="center")
+    writeWS.cell(8, 8, "검사개수").alignment = Alignment(horizontal="center")
+    writeWS.cell(9, 8, "수행시간").alignment = Alignment(horizontal="center")
+    writeWS.merge_cells('I7:J7')
+    writeWS.merge_cells('I8:J8')
+    writeWS.merge_cells('I9:J9')
+    writeWS.cell(7, 9, resultList2[5]).alignment = Alignment(horizontal="center")
+    writeWS.cell(8, 9, resultList2[3]).alignment = Alignment(horizontal="center")
+    writeWS.cell(9, 9, resultList2[4]).alignment = Alignment(horizontal="center")
+    
+    for i in range(0, 3):
+        writeWS.cell(i+7, 8).alignment = Alignment(horizontal="center", vertical="center")
+        writeWS.cell(i+7, 8).font = Font(bold=True, color="FFFFFF")
+        writeWS.cell(i+7, 8).fill = PatternFill(fgColor="333333", fill_type="solid")
+
+
+
+
+    # [SETTING BORDERLINE]
+    THIN_BORDER = Border(Side('thin'),Side('thin'),Side('thin'),Side('thin'))
+    for rng in writeWS[f'A1:F{rowCount-1}']:
+        for cell in rng:
+            cell.border = THIN_BORDER
+    for rng in writeWS[f'H1:J5']:
+        for cell in rng:
+            cell.border = THIN_BORDER
+    for rng in writeWS[f'H7:J9']:
+        for cell in rng:
+            cell.border = THIN_BORDER
+
+
+    # [SAVE FILE]
+    from datetime import datetime
+    time = datetime.today().strftime("%Y-%m-%d_%H-%M-%S")
+    savePath = os.path.join(PROGRAM_PATH, 'data', 'compare_list', 'result_' + time + '.xlsx')
+    writeWB.save(savePath)
+
 class Worker (threading.Thread):
     def __init__(self, name, start, end, folderPath, fileName):
         super().__init__()
@@ -656,8 +717,8 @@ class Worker (threading.Thread):
 # -------------------- [Program Start] --------------------
 if __name__ == '__main__':
     startb = time.time()
-    start = 299
-    end = 300
+    start = 401
+    end = 500
     folderPath = os.path.join(PROGRAM_PATH, 'aihub_data\\hobby_01\\001')
     fileName = "hobby_0000"
 
@@ -667,8 +728,8 @@ if __name__ == '__main__':
     count2 = 0
     count3 = 0
 
-    # ----- THREAD -----
-
+    # ----- THREAD START -----
+    resultList = []
     threads = []
     temp_point = 0
     for n in range(0, NUM_OF_THREADS):
@@ -678,12 +739,17 @@ if __name__ == '__main__':
     
     for thread in threads:
         thread.join()
+    # ----- THREAD END -----
 
-    print("              ETRI  Google  Kakao")
+    print("┌─────────────────────────────────────────────────────────────────┐")
+    print("│         Voice recognition engine performance comparison         │")
+    print("├───────────────┬────────┬────────┬────────┬──────────────────────┤")
+    print("│"+format("FILENAME", "^15")+"│"+format("ETRI", "^8")+"│"+format("Google", "^8")+"│"+format("Kakao", "^8")+"│"+format("MAX API", "^22")+"│")
+    print("├───────────────┼────────┼────────┼────────┼──────────────────────┤")
     for i in range (0, p_size):
-        score_e = '{:.3f}'.format(ratio_list1[i]["ratio"])
-        score_g = '{:.3f}'.format(ratio_list2[i]["ratio"])
-        score_k = '{:.3f}'.format(ratio_list3[i]["ratio"])
+        score_e = '{:.5f}'.format(ratio_list1[i]["ratio"])
+        score_g = '{:.5f}'.format(ratio_list2[i]["ratio"])
+        score_k = '{:.5f}'.format(ratio_list3[i]["ratio"])
         score_max = max(score_e, score_g, score_k)
         max_str = ""
         if (score_max == score_e): 
@@ -716,14 +782,12 @@ if __name__ == '__main__':
             max_str = "Kakao"
             count3 += 1
         
-        print(ratio_list1[i]["name"],
-            '{:.3f}'.format(ratio_list1[i]["ratio"]),
-            '{:.3f}'.format(ratio_list2[i]["ratio"]),
-            '{:.3f}'.format(ratio_list3[i]["ratio"]),
-            max_str
-        )
+        print("│"+format(ratio_list1[i]["name"], "15")+"│"+format(score_e, "8")+"│"+format(score_g, "8")+"│"+format(score_k, "8")+"│"+format(max_str, "22")+"│")
+        row = {"filename":ratio_list1[i]["name"], "ETRI":score_e, "Google":score_g, "Kakao":score_k, "MAX_API":max_str}
+        resultList.append(row)
 
-    print("------------------------------------------------------")
+    print("└───────────────┴────────┴────────┴────────┴──────────────────────┘")
+    print("-------------------------------------------------------------------")
 
     ratio1 = round(count1/p_size*100)
     ratio2 = round(count2/p_size*100)
@@ -746,3 +810,15 @@ if __name__ == '__main__':
         print("Kakao ", end="")
     print()
     print("RUNTIME :", ShowRunTime(round(time.time() - startb, 0)))
+    
+    resultList2 = []
+    resultList2.append(count1)
+    resultList2.append(count2)
+    resultList2.append(count3)
+    resultList2.append(p_size)
+    resultList2.append(ShowRunTime(round(time.time() - startb, 0)))
+    resultList2.append(USED_DATA_SET)
+
+# 수행시간, 사용데이터셋, 검사개수
+
+    OutputCompareResultAsEXCEL(resultList, resultList2)
